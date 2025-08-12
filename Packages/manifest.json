@@ -40,5 +40,11 @@
     "com.unity.modules.vr": "1.0.0",
     "com.unity.modules.wind": "1.0.0",
     "com.unity.modules.xr": "1.0.0"
+  },
+  "lock": {
+    "com.liminal.sdk": {
+      "hash": "210c9fd3bb248b0caf9ead6965d4517efea610d2",
+      "revision": "develop"
+    }
   }
 }
