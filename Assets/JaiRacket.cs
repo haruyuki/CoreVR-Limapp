@@ -4,19 +4,12 @@ using UnityEngine;
 
 public class JaiRacket : MonoBehaviour
 {
-    void Update() 
+    private void OnTriggerEnter(Collider other)
     {
-        //transform.Translate(1f, 0, 0);
-    }
+        Ball ball = other.GetComponent<Ball>();
+        if (ball == null) return;
 
-    void OnCollisionEnter(Collision collision) 
-    {
-        Ball ball = collision.gameObject.GetComponent<Ball>();
-        
-        if (ball != null) 
-            {
-                ball.enabled = true;
-            }
+        ball.enabled = true;
+        ball.velocity = new Vector3(-ball.velocity.x, ball.velocity.y, ball.velocity.z);
     }
-    
 }

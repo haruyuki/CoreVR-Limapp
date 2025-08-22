@@ -134,7 +134,7 @@ GameObject:
   - component: {fileID: 208528715}
   - component: {fileID: 208528714}
   m_Layer: 0
-  m_Name: Cube
+  m_Name: Target
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -239,8 +239,9 @@ GameObject:
   - component: {fileID: 366534369}
   - component: {fileID: 366534368}
   - component: {fileID: 366534367}
+  - component: {fileID: 366534371}
   m_Layer: 0
-  m_Name: Cube (1)
+  m_Name: Tennis Racquet
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -254,7 +255,7 @@ BoxCollider:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 366534366}
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
   m_Size: {x: 1, y: 1, z: 1}
@@ -313,11 +314,23 @@ Transform:
   m_GameObject: {fileID: 366534366}
   m_LocalRotation: {x: 0, y: 0, z: 0.7071068, w: 0.7071068}
   m_LocalPosition: {x: -3, y: 10, z: 0}
-  m_LocalScale: {x: 1.1024143, y: 0.13089475, z: 3.5478563}
+  m_LocalScale: {x: 4, y: 1, z: 4}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 90}
+--- !u!114 &366534371
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 366534366}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 94566af98912d7a4fbd235212a7b547c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &462422526
 GameObject:
   m_ObjectHideFlags: 0
@@ -331,7 +344,7 @@ GameObject:
   - component: {fileID: 462422528}
   - component: {fileID: 462422527}
   m_Layer: 0
-  m_Name: Plane
+  m_Name: Floor
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -437,7 +450,7 @@ Light:
   m_Enabled: 1
   serializedVersion: 9
   m_Type: 1
-  m_Color: {r: 1, g: 0.95686275, b: 0.8392157, a: 1}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_Intensity: 1
   m_Range: 10
   m_SpotAngle: 30
@@ -494,13 +507,13 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 705507993}
-  m_LocalRotation: {x: 0.8748911, y: -0.10968858, z: 0.23442632, w: 0.40936342}
+  m_LocalRotation: {x: 0.49388066, y: 0.22773473, z: 0.375538, w: 0.75045997}
   m_LocalPosition: {x: -4.2, y: 49.5, z: -47.5}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 3
-  m_LocalEulerAnglesHint: {x: 129.85, y: -30, z: 0}
+  m_LocalEulerAnglesHint: {x: 145.234, y: -119.815, z: -106.267}
 --- !u!1 &713327713
 GameObject:
   m_ObjectHideFlags: 0
@@ -514,7 +527,7 @@ GameObject:
   - component: {fileID: 713327715}
   - component: {fileID: 713327714}
   m_Layer: 0
-  m_Name: Plane (1)
+  m_Name: Wall
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -910,7 +923,7 @@ Rigidbody:
   m_IsKinematic: 1
   m_Interpolate: 0
   m_Constraints: 0
-  m_CollisionDetection: 0
+  m_CollisionDetection: 1
 --- !u!1001 &3255593561473465162
 PrefabInstance:
   m_ObjectHideFlags: 0
