@@ -8,6 +8,7 @@ public class Target : MonoBehaviour
 {
     public GameObject ball;
     public GameObject brokenParticle;
+    public PointSystem pointSystem;
     // Start is called before the first frame update
     void Start()
     {
@@ -25,6 +26,11 @@ public class Target : MonoBehaviour
         Instantiate(brokenParticle, transform.position, Quaternion.identity);
         transform.position = new Vector3(transform.position.x, transform.position.y + UnityEngine.Random.Range(-1f,1f), transform.position.z + UnityEngine.Random.Range(-1f,1f));
 
+        if (pointSystem != null)
+        {
+            pointSystem.AddPoint();
+            Debug.Log("plus a point");
+        }
     }
 
     public void OnTriggerEnter(Collider other)
