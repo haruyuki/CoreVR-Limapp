@@ -19,6 +19,8 @@ public class Ball : MonoBehaviour
 
     private AudioSource source;
 
+    public Transform startPos;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -47,14 +49,38 @@ public class Ball : MonoBehaviour
 
         if (position.x < oobX)
         {
-            velocity = new Vector3(-velocity.x, velocity.y, velocity.z);
-            position.x = oobX;
+            StartCoroutine(returnToStart());
 
         }
 
         velocity = new Vector3(velocity.x, velocity.y-(Time.deltaTime*g), velocity.z);
         
         transform.position = position;
+
+    }
+
+    IEnumerator returnToStart()
+    {
+        Vector3 start = transform.position;
+
+        float duration = 1f;
+        float elapsed = 0f;
+
+        while(elapsed < duration){
+            transform.position = Vector3.Lerp(start, startPos.position, elapsed/duration);
+            position = transform.position;
+            elapsed += Time.deltaTime;
+            yield return null;
+
+
+        }
+
+        transform.position = startPos.position;
+        position = startPos.position;
+        velocity = new Vector3(-20, 0, 0);
+        yield return null;
+        gameObject.GetComponent<Ball>().enabled = false;
+
 
     }
 }
