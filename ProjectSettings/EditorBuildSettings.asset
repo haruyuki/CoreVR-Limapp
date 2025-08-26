@@ -5,7 +5,10 @@ EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Scenes:
-  - enabled: 1
-    path: Assets/Examples/Scenes/Main.unity
+  - enabled: 0
+    path: Assets/Examples/Scenes/Example.unity
     guid: 17d10320f148ee64488837d5f8008cfd
+  - enabled: 1
+    path: Assets/CoreVR Assets/Scenes/JaiTest.unity
+    guid: f1cc6f48f56268443a433a973f7f3e31
   m_configObjects: {}

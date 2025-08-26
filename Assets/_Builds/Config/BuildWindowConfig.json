@@ -1,6 +1,6 @@
 {
-    "PreviousScene": "",
-    "TargetScene": "Assets/Examples/Scenes/Example.unity",
+    "PreviousScene": "Assets/CoreVR Assets/Scenes/JaiTest.unity",
+    "TargetScene": "Assets/CoreVR Assets/Scenes/JaiTest.unity",
     "AdditionalReferences": [],
-    "SelectedPlatform": 0
+    "SelectedPlatform": 1
 }
