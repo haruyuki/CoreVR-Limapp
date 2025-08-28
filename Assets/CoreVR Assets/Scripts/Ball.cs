@@ -48,12 +48,7 @@ public class Ball : MonoBehaviour
 
         if (position.z < oobZ)
         {
-<<<<<<< HEAD:Assets/Ball.cs
-            velocity = new Vector3(velocity.x, velocity.y, -velocity.z);
-            position.z = oobZ;
-=======
             StartCoroutine(returnToStart());
->>>>>>> master:Assets/CoreVR Assets/Scripts/Ball.cs
 
         }
 
