@@ -10,6 +10,6 @@ public class JaiRacket : MonoBehaviour
         if (ball == null) return;
 
         ball.enabled = true;
-        ball.velocity = new Vector3(-ball.velocity.x, ball.velocity.y, ball.velocity.z);
+        ball.velocity = new Vector3(ball.velocity.x, ball.velocity.y, -ball.velocity.z);
     }
 }
