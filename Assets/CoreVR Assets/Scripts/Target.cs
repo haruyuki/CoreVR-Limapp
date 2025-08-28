@@ -23,8 +23,8 @@ public class Target : MonoBehaviour
 
     void BreakTarget()
     {
-        Instantiate(brokenParticle, transform.position, transform.rotation);
-        transform.position = new Vector3(transform.position.x + UnityEngine.Random.Range(-1f,1f), transform.position.y + UnityEngine.Random.Range(-1f,1f), transform.position.z);
+        Instantiate(brokenParticle, transform.position, Quaternion.identity);
+        transform.position = new Vector3(transform.position.x, transform.position.y + UnityEngine.Random.Range(-1f,1f), transform.position.z + UnityEngine.Random.Range(-1f,1f));
 
         if (pointSystem != null)
         {
