@@ -11,4 +11,10 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/CoreVR Assets/Scenes/JaiTest.unity
     guid: f1cc6f48f56268443a433a973f7f3e31
+  - enabled: 0
+    path: Assets/Examples/Scenes/ControllerInput.unity
+    guid: 1f53213734a0ee549b5f95184bcc2e02
+  - enabled: 0
+    path: Assets/CoreVR Assets/Scenes/AndroidTest.unity
+    guid: 4a45a27fc409ea84b90a71fa88e9bb73
   m_configObjects: {}
