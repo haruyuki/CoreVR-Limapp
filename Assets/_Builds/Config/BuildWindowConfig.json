@@ -1,6 +1,6 @@
 {
-    "PreviousScene": "Assets/CoreVR Assets/Scenes/JaiTest.unity",
-    "TargetScene": "Assets/CoreVR Assets/Scenes/JaiTest.unity",
+    "PreviousScene": "Assets/CoreVR Assets/Scenes/AndroidTest.unity",
+    "TargetScene": "Assets/CoreVR Assets/Scenes/AndroidTest.unity",
     "AdditionalReferences": [],
     "SelectedPlatform": 2
 }
