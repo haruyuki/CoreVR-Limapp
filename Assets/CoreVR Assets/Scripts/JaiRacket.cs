@@ -4,10 +4,15 @@ using UnityEngine;
 
 public class JaiRacket : MonoBehaviour
 {
+    public AudioSource audioSource;
+    public AudioClip racketHit;
+
     private void OnTriggerEnter(Collider other)
     {
         Ball ball = other.GetComponent<Ball>();
         if (ball == null) return;
+
+        audioSource.PlayOneShot(racketHit);
 
         ball.enabled = true;
         ball.velocity = new Vector3(-ball.velocity.x, ball.velocity.y, ball.velocity.z);
