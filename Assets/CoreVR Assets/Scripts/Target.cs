@@ -27,7 +27,23 @@ public class Target : MonoBehaviour
         
     }
 
-    void BreakTarget()
+    void OnEnable()
+    {
+        Ball.OnMissed += HandleBallMissed;
+    }
+
+    void OnDisable()
+    {
+        Ball.OnMissed -= HandleBallMissed;
+    }
+
+    private void HandleBallMissed()
+    {
+        ResetComboAndSize();
+    }
+
+
+    void BreakTarget(Ball ballScript)
     {
         if (brokenParticle != null)
             Instantiate(brokenParticle, transform.position, Quaternion.identity);
@@ -44,15 +60,21 @@ public class Target : MonoBehaviour
         _combo++;
         float factor = Mathf.Max(minScaleFactor, 1f - _combo * shrinkPerHit);
         transform.localScale = _initialScale * factor;
+
+        if (ballScript != null)
+        {
+            ballScript.SetCombo(_combo);
+        }
+
     }
 
     public void OnTriggerEnter(Collider other)
     {
         Debug.Log("collided");
-       if(other.gameObject == ball)
+        var ballScript = other.GetComponentInParent<Ball>();
+        if (ballScript != null)
         {
-
-            BreakTarget();
+            BreakTarget(ballScript);
         }
     }
     

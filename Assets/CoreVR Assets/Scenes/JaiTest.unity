@@ -1964,6 +1964,8 @@ MonoBehaviour:
   floorBounceClip: []
   wallBounceClip: []
   startPos: {fileID: 1004888181}
+  baseSpeed: 0
+  extraSpeedPerCombo: 5
 --- !u!135 &1703560699
 SphereCollider:
   m_ObjectHideFlags: 0
