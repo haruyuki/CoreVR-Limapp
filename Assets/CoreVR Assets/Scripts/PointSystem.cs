@@ -7,10 +7,13 @@ public class PointSystem : MonoBehaviour
 {
     public int score = 0;
     public TMP_Text scoreText;
+
+    public static PointSystem instance;
    
     void Start()
     {
         UpdateScoreUI();
+        instance = this;
     }
 
     public void AddPoint()

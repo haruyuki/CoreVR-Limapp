@@ -11,7 +11,7 @@ public class Ball : MonoBehaviour
     public float g = 9.1f; //gravity
 
     public float floorY = 0;
-    public float wallX = 10;
+    public GameObject wall;
     public float oobX = -10;
     public float oobZ = 0;
 
@@ -53,10 +53,20 @@ public class Ball : MonoBehaviour
             //source.PlayOneShot(floorBounceClip[UnityEngine.Random.Range(0, floorBounceClip.Length-1)]);
         }
 
-        if(position.x > wallX)
+        if(position.x > wall.transform.position.x)
         {
             velocity = new Vector3(-velocity.x, velocity.y, velocity.z);
-            position.x = wallX;
+            position.x = wall.transform.position.x;
+            if(hasHitTarget){
+
+                hasHitTarget = false;
+                PointSystem.instance.AddPoint();
+            }else{
+
+                 PointSystem.instance.ResetScore();
+
+
+            }
             //source.PlayOneShot(wallBounceClip[UnityEngine.Random.Range(0, wallBounceClip.Length-1)]);
 
         }
@@ -64,6 +74,8 @@ public class Ball : MonoBehaviour
         if (position.x < oobX)
         {
             StartCoroutine(returnToStart());
+            PointSystem.instance.ResetScore();
+
 
         }
 
@@ -97,11 +109,14 @@ public class Ball : MonoBehaviour
 
     }
 
+    public bool hasHitTarget = false;
+
     //Combo speed
     public void SetCombo(int combo)
     {
         _currentCombo = Mathf.Max(0, combo);
         ApplyComboSpeed();
+        hasHitTarget = true;
     }
 
     public void ResetCombo()
