@@ -17,4 +17,7 @@ EditorBuildSettings:
   - enabled: 0
     path: Assets/CoreVR Assets/Scenes/AndroidTest.unity
     guid: 4a45a27fc409ea84b90a71fa88e9bb73
+  - enabled: 0
+    path: Assets/CoreVR Assets/Scenes/ControllerTest.unity
+    guid: f6d382f52adbb3849a2b1f398f62b14b
   m_configObjects: {}

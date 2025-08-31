@@ -235,7 +235,7 @@ MonoBehaviour:
     type: 3}
   m_PrefabInstance: {fileID: 2009847239}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
+  m_GameObject: {fileID: 1615484356}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: -1848150265, guid: 1661fa78af9aece459a3302206a05902, type: 3}
@@ -274,41 +274,6 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1.9105695, y: 0.77, z: 1.8672779}
   m_Center: {x: -0.000000061616284, y: -0.006752838, z: -0.053909693}
---- !u!114 &196113572
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 196113566}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 532271796, guid: a80148f7c24f27741a9721c40a216ac9, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  UpdateRate: 0
-  ControllerVisualSettings:
-    Visible: 1
-  PointerVisualSettings:
-    LocalPosition: {x: 0, y: 0, z: 0}
-    LocalEulerAngle: {x: 0, y: 0, z: 0}
-    ReticleVisibility: 1
-    HideReticleWhenInvalid: 1
-    DefaultReticleDistance: 20
-    GrowTime: 0.1
-    MaxDistance: 20
---- !u!114 &196113573
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 196113566}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: -1848150265, guid: a80148f7c24f27741a9721c40a216ac9, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &262203903 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 7559482363416813863, guid: 22276a8657744e04cba8ad0a2caf4195,
@@ -407,7 +372,7 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
-      objectReference: {fileID: 2100000, guid: 1eeefbf9761a6674f80226733071665f, type: 2}
+      objectReference: {fileID: 2100000, guid: 8bd00fd43841de44e9ede1f4f00ecd1e, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b1232bc233d11994a9a57dab7b08916d, type: 3}
 --- !u!1 &338627860 stripped
@@ -433,8 +398,8 @@ MonoBehaviour:
   pointSystem: {fileID: 1245055717}
   shrinkPerHit: 0.1
   minScaleFactor: 0.2
---- !u!136 &338627862
-CapsuleCollider:
+--- !u!64 &338627862
+MeshCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -443,10 +408,10 @@ CapsuleCollider:
   m_Material: {fileID: 0}
   m_IsTrigger: 1
   m_Enabled: 1
-  m_Radius: 8.287849
-  m_Height: 1.7939129
-  m_Direction: 1
-  m_Center: {x: 0, y: 0.89680386, z: 0.00000166893}
+  serializedVersion: 3
+  m_Convex: 1
+  m_CookingOptions: 14
+  m_Mesh: {fileID: -2124705421725058983, guid: b1232bc233d11994a9a57dab7b08916d, type: 3}
 --- !u!4 &338627863 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -4216859302048453862, guid: b1232bc233d11994a9a57dab7b08916d,
@@ -1600,7 +1565,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1420261252}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 21.4, y: -4.234105, z: 94.8}
+  m_LocalPosition: {x: 21.4, y: -6, z: 94.8}
   m_LocalScale: {x: 2.2764015, y: 2.2764006, z: 2.2764015}
   m_Children:
   - {fileID: 1763372828}
@@ -1719,6 +1684,35 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 19.006258, y: 9.162033, z: 0.74874854}
   m_Center: {x: -9.503129, y: 4.122916, z: 0.000007659197}
+--- !u!1 &1615484356 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1260162969412560869, guid: 22276a8657744e04cba8ad0a2caf4195,
+    type: 3}
+  m_PrefabInstance: {fileID: 2009847239}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1615484358
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1615484356}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 532271796, guid: a80148f7c24f27741a9721c40a216ac9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  UpdateRate: 0
+  ControllerVisualSettings:
+    Visible: 1
+  PointerVisualSettings:
+    LocalPosition: {x: 0, y: 0, z: 0}
+    LocalEulerAngle: {x: 0, y: 0, z: 0}
+    ReticleVisibility: 1
+    HideReticleWhenInvalid: 1
+    DefaultReticleDistance: 20
+    GrowTime: 0.1
+    MaxDistance: 20
 --- !u!1 &1627392822
 GameObject:
   m_ObjectHideFlags: 0
@@ -2554,6 +2548,11 @@ PrefabInstance:
     - target: {fileID: 1260162969412560869, guid: 22276a8657744e04cba8ad0a2caf4195,
         type: 3}
       propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1260162970045296578, guid: 22276a8657744e04cba8ad0a2caf4195,
+        type: 3}
+      propertyPath: m_ActivationPolicy
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
