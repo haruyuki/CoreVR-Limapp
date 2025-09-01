@@ -45,8 +45,10 @@ public class Target : MonoBehaviour
 
     void BreakTarget(Ball ballScript)
     {
-        if (brokenParticle != null)
-            Instantiate(brokenParticle, transform.position, Quaternion.identity);
+        if (brokenParticle != null){
+            GameObject bp = Instantiate(brokenParticle, transform.position, brokenParticle.transform.rotation);
+            bp.SetActive(true);
+        }
 
         transform.position = new Vector3(transform.position.x, transform.position.y + UnityEngine.Random.Range(-1f,1f), transform.position.z + UnityEngine.Random.Range(-1f,1f));
 
