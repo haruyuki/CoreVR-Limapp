@@ -15,10 +15,15 @@ public class Target : MonoBehaviour
     public float minScaleFactor = 0.2f;
     private Vector3 _initialScale;
     private int _combo = 0;
+
+    public static Target instance;
+
     // Start is called before the first frame update
     void Start()
     {
         _initialScale = transform.localScale; // remember starting size
+        instance = this;
+
     }
 
     // Update is called once per frame

@@ -68,6 +68,7 @@ public class Ball : MonoBehaviour
             }else{
 
                  PointSystem.instance.ResetScore();
+                 Target.instance.ResetComboAndSize();
 
 
             }
@@ -82,6 +83,8 @@ public class Ball : MonoBehaviour
             //transform.position = startPos;
             position = startPos.position;
             velocity = new Vector3(-15,12,-3);
+            Target.instance.ResetComboAndSize();
+
 
 
         }
@@ -93,6 +96,8 @@ public class Ball : MonoBehaviour
             //transform.position = startPos;
             position = startPos.position;
             velocity = new Vector3(-15,12,-3);
+            Target.instance.ResetComboAndSize();
+
 
 
         }
