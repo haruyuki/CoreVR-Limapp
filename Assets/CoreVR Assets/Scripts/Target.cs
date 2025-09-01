@@ -50,7 +50,7 @@ public class Target : MonoBehaviour
             bp.SetActive(true);
         }
 
-        transform.position = new Vector3(transform.position.x, transform.position.y + UnityEngine.Random.Range(-1f,1f), transform.position.z + UnityEngine.Random.Range(-1f,1f));
+
 
         if (pointSystem != null)
         {
@@ -67,8 +67,30 @@ public class Target : MonoBehaviour
         {
             ballScript.SetCombo(_combo);
         }
+        StartCoroutine(respawn());
+        transform.GetComponent<MeshCollider>().enabled = (false);
+        transform.GetComponent<Renderer>().enabled = (false);
+
+
 
     }
+
+    IEnumerator respawn(){
+        float duration = .5f;
+        float elapsed = 0f;
+
+        while(elapsed < duration){
+            elapsed += Time.deltaTime;
+            yield return null;
+        }
+        transform.position = new Vector3(transform.position.x, transform.position.y + UnityEngine.Random.Range(-1f,1f), transform.position.z + UnityEngine.Random.Range(-1f,1f));
+                yield return null;
+
+        transform.GetComponent<MeshCollider>().enabled = (true);
+        transform.GetComponent<Renderer>().enabled = (true);
+
+    }
+
 
     public void OnTriggerEnter(Collider other)
     {
