@@ -20,6 +20,8 @@ public class JaiRacket : MonoBehaviour
         Vector3 normalDir = (normal.position - transform.position).normalized;
         float side = -Vector3.Dot(normalDir, ball.velocity.normalized);
 
-        ball.velocity = ball.velocity.magnitude * normalDir * side;
+
+
+        ball.velocity = ball.velocity.magnitude * normalDir * (side > 0 ? 1 : -1);
     }
 }
