@@ -55,7 +55,7 @@ public class Ball : MonoBehaviour
 
         if(position.x > wall.transform.position.x)
         {
-            velocity = new Vector3(-velocity.x, velocity.y, velocity.z);
+            velocity = new Vector3(-velocity.x, velocity.y, -velocity.z);
             position.x = wall.transform.position.x;
             if(hasHitTarget){
 
