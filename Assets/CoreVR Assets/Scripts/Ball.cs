@@ -17,6 +17,8 @@ public class Ball : MonoBehaviour
 
     public AudioClip[] floorBounceClip;
     public AudioClip[] wallBounceClip;
+    public AudioClip[] targetClip;
+
 
     private AudioSource source;
 
@@ -50,7 +52,7 @@ public class Ball : MonoBehaviour
         {
             velocity = new Vector3(velocity.x, -velocity.y, velocity.z);
             position.y = floorY;
-            //source.PlayOneShot(floorBounceClip[UnityEngine.Random.Range(0, floorBounceClip.Length-1)]);
+            source.PlayOneShot(floorBounceClip[UnityEngine.Random.Range(0, floorBounceClip.Length-1)]);
         }
 
         if(position.x > wall.transform.position.x)
@@ -61,17 +63,30 @@ public class Ball : MonoBehaviour
 
                 hasHitTarget = false;
                 PointSystem.instance.AddPoint();
+                source.PlayOneShot(targetClip[UnityEngine.Random.Range(0, targetClip.Length-1)]);
+
             }else{
 
                  PointSystem.instance.ResetScore();
 
 
             }
-            //source.PlayOneShot(wallBounceClip[UnityEngine.Random.Range(0, wallBounceClip.Length-1)]);
+            source.PlayOneShot(wallBounceClip[UnityEngine.Random.Range(0, wallBounceClip.Length-1)]);
 
         }
 
         if (position.x < oobX)
+        {
+            //StartCoroutine(returnToStart());
+            PointSystem.instance.ResetScore();
+            //transform.position = startPos;
+            position = startPos.position;
+            velocity = new Vector3(-15,12,-3);
+
+
+        }
+
+        if (Mathf.Abs(position.z) > oobZ)
         {
             //StartCoroutine(returnToStart());
             PointSystem.instance.ResetScore();
