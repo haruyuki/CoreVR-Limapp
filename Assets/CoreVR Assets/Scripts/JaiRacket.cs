@@ -6,6 +6,7 @@ public class JaiRacket : MonoBehaviour
 {
     public AudioSource audioSource;
     public AudioClip racketHit;
+    public Transform normal;
 
     private void OnTriggerEnter(Collider other)
     {
@@ -15,6 +16,9 @@ public class JaiRacket : MonoBehaviour
         audioSource.PlayOneShot(racketHit);
 
         ball.enabled = true;
-        ball.velocity = new Vector3(-ball.velocity.x, ball.velocity.y, ball.velocity.z);
+        //ball.velocity = new Vector3(-ball.velocity.x, ball.velocity.y, ball.velocity.z);
+        Vector3 normalDir = (normal.position - transform.position).normalized;
+        
+        ball.velocity = ball.velocity.magnitude * normaDir;
     }
 }

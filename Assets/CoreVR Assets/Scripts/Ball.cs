@@ -73,8 +73,11 @@ public class Ball : MonoBehaviour
 
         if (position.x < oobX)
         {
-            StartCoroutine(returnToStart());
+            //StartCoroutine(returnToStart());
             PointSystem.instance.ResetScore();
+            //transform.position = startPos;
+            position = startPos.position;
+            velocity = new Vector3(-15,12,-3);
 
 
         }
