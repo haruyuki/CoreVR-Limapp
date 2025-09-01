@@ -2001,7 +2001,9 @@ MonoBehaviour:
   - {fileID: 8300000, guid: 746825ba8a4764f3ab949e69ded1c57b, type: 3}
   - {fileID: 8300000, guid: bf09b0d2d0df54ae994903b7c656d922, type: 3}
   targetClip:
-  - {fileID: 8300000, guid: a754ee83d218b42a9b477f988cea9e2d, type: 3}
+  - {fileID: 8300000, guid: 3922e0d2018904595b06a56c014c8af6, type: 3}
+  - {fileID: 8300000, guid: c55cacf1628974a26a3ab036fc565900, type: 3}
+  - {fileID: 8300000, guid: 3827e10ead78e4417b9eaf513c558047, type: 3}
   startPos: {fileID: 1004888181}
   baseSpeed: 0
   extraSpeedPerCombo: 5
