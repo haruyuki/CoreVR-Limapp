@@ -10,6 +10,13 @@ public class Target : MonoBehaviour
     public GameObject brokenParticle;
     public PointSystem pointSystem;
 
+
+    public Transform wall;
+    public Vector3 wallPos;
+    public Vector3 wallOffset;
+    private static Vector3 wallResetPos;
+
+
     [Header("Shrink / Combo Settings")]
     public float shrinkPerHit = 0.1f;
     public float minScaleFactor = 0.2f;
@@ -23,13 +30,15 @@ public class Target : MonoBehaviour
     {
         _initialScale = transform.localScale; // remember starting size
         instance = this;
+        wallResetPos = wall.position;
+        wallPos = wallResetPos;
 
     }
 
     // Update is called once per frame
     void Update()
     {
-        
+        wall.position = Vector3.Lerp(wall.position, wallPos, Time.deltaTime);
     }
 
     void OnEnable()
@@ -71,7 +80,9 @@ public class Target : MonoBehaviour
         if (ballScript != null)
         {
             ballScript.SetCombo(_combo);
+
         }
+        wallPos += wallOffset;
         StartCoroutine(respawn());
         transform.GetComponent<MeshCollider>().enabled = (false);
         transform.GetComponent<Renderer>().enabled = (false);
@@ -112,5 +123,8 @@ public class Target : MonoBehaviour
     {
         _combo = 0;
         transform.localScale = _initialScale;
+        //wall.position = wallResetPos;
+        wallPos = wallResetPos;
+        
     }
 }
