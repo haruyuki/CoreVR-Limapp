@@ -65,6 +65,7 @@ public class Ball : MonoBehaviour
 
                 hasHitTarget = false;
                 PointSystem.instance.AddPoint();
+                trailRenderer.time += .2f;
                 source.PlayOneShot(targetClip[UnityEngine.Random.Range(0, targetClip.Length-1)]);
 
             }else{
@@ -87,6 +88,8 @@ public class Ball : MonoBehaviour
 
             position = startPos.position;
                     transform.position = position;
+                    trailRenderer.time = .5f;
+
 
             velocity = new Vector3(-15,12,-3);
             Target.instance.ResetComboAndSize();
@@ -103,6 +106,7 @@ public class Ball : MonoBehaviour
             PointSystem.instance.ResetScore();
             //transform.position = startPos;
                         trailRenderer.Clear();
+                        trailRenderer.time = .5f;
 
             position = startPos.position;
             transform.position = position;

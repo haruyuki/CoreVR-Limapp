@@ -77,7 +77,8 @@ public class Target : MonoBehaviour
         //combo when hit will shrink
         _combo++;
         float factor = Mathf.Max(minScaleFactor, 1f - _combo * shrinkPerHit);
-        transform.localScale = _initialScale * factor;
+        transform.localScale = new Vector3(_initialScale.x * factor, _initialScale.y, _initialScale.z * factor);
+
 
         if (ballScript != null)
         {
