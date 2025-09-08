@@ -19,6 +19,8 @@ public class Ball : MonoBehaviour
     public AudioClip[] wallBounceClip;
     public AudioClip[] targetClip;
 
+    public TrailRenderer trailRenderer;
+
 
     private AudioSource source;
 
@@ -81,9 +83,15 @@ public class Ball : MonoBehaviour
             //StartCoroutine(returnToStart());
             PointSystem.instance.ResetScore();
             //transform.position = startPos;
+                        trailRenderer.Clear();
+
             position = startPos.position;
+                    transform.position = position;
+
             velocity = new Vector3(-15,12,-3);
             Target.instance.ResetComboAndSize();
+            trailRenderer.Clear();
+
 
 
 
@@ -94,9 +102,15 @@ public class Ball : MonoBehaviour
             //StartCoroutine(returnToStart());
             PointSystem.instance.ResetScore();
             //transform.position = startPos;
+                        trailRenderer.Clear();
+
             position = startPos.position;
+            transform.position = position;
+
             velocity = new Vector3(-15,12,-3);
             Target.instance.ResetComboAndSize();
+            trailRenderer.Clear();
+
 
 
 
@@ -122,7 +136,10 @@ public class Ball : MonoBehaviour
             yield return null;
         }
 
+
         transform.position = startPos.position;
+        trailRenderer.Clear();
+
         position = startPos.position;
         velocity = new Vector3(-20, 0, 0);
         ResetCombo();
