@@ -22,6 +22,7 @@ public class Target : MonoBehaviour
     public float minScaleFactor = 0.2f;
     private Vector3 _initialScale;
     private int _combo = 0;
+    private Vector3 startPos;
 
     public static Target instance;
 
@@ -32,6 +33,7 @@ public class Target : MonoBehaviour
         instance = this;
         wallResetPos = wall.position;
         wallPos = wallResetPos;
+        startPos = transform.position;
 
     }
 
@@ -99,7 +101,7 @@ public class Target : MonoBehaviour
             elapsed += Time.deltaTime;
             yield return null;
         }
-        transform.position = new Vector3(transform.position.x, transform.position.y + UnityEngine.Random.Range(-1f,1f), transform.position.z + UnityEngine.Random.Range(-1f,1f));
+        transform.position = new Vector3(transform.position.x, startPos.y + UnityEngine.Random.Range(-1f,1f), startPos.z + UnityEngine.Random.Range(-1f,1f));
                 yield return null;
 
         transform.GetComponent<MeshCollider>().enabled = (true);

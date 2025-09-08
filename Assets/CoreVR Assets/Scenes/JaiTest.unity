@@ -249,6 +249,8 @@ MonoBehaviour:
   audioSource: {fileID: 1329114822}
   racketHit: {fileID: 8300000, guid: 53fa120eae57c4946a5e4a16daaab72a, type: 3}
   normal: {fileID: 228482223}
+  target: {fileID: 338627863}
+  aimAssist: 0.5
 --- !u!65 &196113570
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -272,7 +274,7 @@ GameObject:
   m_Component:
   - component: {fileID: 228482223}
   m_Layer: 0
-  m_Name: RacketNorma
+  m_Name: RacketNormal
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

@@ -7,6 +7,8 @@ public class JaiRacket : MonoBehaviour
     public AudioSource audioSource;
     public AudioClip racketHit;
     public Transform normal;
+    public Transform target;
+    public float aimAssist = .5f;
 
     private void OnTriggerEnter(Collider other)
     {
@@ -20,8 +22,10 @@ public class JaiRacket : MonoBehaviour
         Vector3 normalDir = (normal.position - transform.position).normalized;
         float side = -Vector3.Dot(normalDir, ball.velocity.normalized);
 
+        Vector3 towardsTarget = (target.position + new Vector3(0, 3, 0) - ball.position).normalized;
+        Vector3 hitDir = normalDir * (side > 0 ? 1 : -1);
 
 
-        ball.velocity = ball.velocity.magnitude * normalDir * (side > 0 ? 1 : -1);
+        ball.velocity = ball.velocity.magnitude * Vector3.Lerp(hitDir, towardsTarget, aimAssist);
     }
 }
