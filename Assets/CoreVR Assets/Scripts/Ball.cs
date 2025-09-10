@@ -6,14 +6,18 @@ public class Ball : MonoBehaviour
 {
     public Vector3 position;
     public Vector3 velocity = new Vector3(0,10,0);
+    private Vector3 startVelocity;
     public static event System.Action OnMissed;
 
     public float g = 9.1f; //gravity
 
     public float floorY = 0;
+    public GameObject floorHitParticle;
     public GameObject wall;
     public float oobX = -10;
     public float oobZ = 0;
+
+    public Vector2 ballSpread = new Vector2(2,1); //height, width
 
     public AudioClip[] floorBounceClip;
     public AudioClip[] wallBounceClip;
@@ -43,6 +47,7 @@ public class Ball : MonoBehaviour
             baseSpeed = velocity.magnitude;
 
         position = transform.position;
+        startVelocity = velocity;
     }
 
     // Update is called once per frame
@@ -52,30 +57,12 @@ public class Ball : MonoBehaviour
 
         if(position.y < floorY)
         {
-            velocity = new Vector3(velocity.x, -velocity.y, velocity.z);
-            position.y = floorY;
-            source.PlayOneShot(floorBounceClip[UnityEngine.Random.Range(0, floorBounceClip.Length-1)]);
+           HitFloor();
         }
 
         if(position.x > wall.transform.position.x)
         {
-            velocity = new Vector3(-velocity.x, velocity.y, -velocity.z);
-            position.x = wall.transform.position.x;
-            if(hasHitTarget){
-
-                hasHitTarget = false;
-                PointSystem.instance.AddPoint();
-                trailRenderer.time += .2f;
-                source.PlayOneShot(targetClip[UnityEngine.Random.Range(0, targetClip.Length-1)]);
-
-            }else{
-
-                 PointSystem.instance.ResetScore();
-                 Target.instance.ResetComboAndSize();
-
-
-            }
-            source.PlayOneShot(wallBounceClip[UnityEngine.Random.Range(0, wallBounceClip.Length-1)]);
+           HitWall();
 
         }
 
@@ -91,7 +78,7 @@ public class Ball : MonoBehaviour
                     trailRenderer.time = .5f;
 
 
-            velocity = new Vector3(-15,12,-3);
+            velocity = startVelocity;
             Target.instance.ResetComboAndSize();
             trailRenderer.Clear();
 
@@ -111,7 +98,7 @@ public class Ball : MonoBehaviour
             position = startPos.position;
             transform.position = position;
 
-            velocity = new Vector3(-15,12,-3);
+            velocity = startVelocity;
             Target.instance.ResetComboAndSize();
             trailRenderer.Clear();
 
@@ -126,32 +113,45 @@ public class Ball : MonoBehaviour
 
     }
 
-    IEnumerator returnToStart()
-    {
-        Vector3 start = transform.position;
 
-        float duration = 1f;
-        float elapsed = 0f;
 
-        while(elapsed < duration){
-            transform.position = Vector3.Lerp(start, startPos.position, elapsed/duration);
-            position = transform.position;
-            elapsed += Time.deltaTime;
-            yield return null;
+    public void HitFloor(){
+        velocity = new Vector3(velocity.x, -velocity.y, velocity.z);
+        position.y = floorY;
+        source.PlayOneShot(floorBounceClip[UnityEngine.Random.Range(0, floorBounceClip.Length-1)]);
+        GameObject fp = Instantiate(floorHitParticle, transform.position, floorHitParticle.transform.rotation);
+        fp.SetActive(true);
+    }
+
+    public void HitWall(){
+
+        //select new position
+        Vector3 towardsPos = new Vector3(0,10+UnityEngine.Random.Range(0, ballSpread.x),UnityEngine.Random.Range(-ballSpread.y/2, ballSpread.y/2));
+        Vector3 towardsStart = (towardsPos - new Vector3(position.x, 0, position.z)).normalized;
+        Vector3 newVelocity = towardsStart * velocity.magnitude;
+
+        velocity = new Vector3(newVelocity.x, newVelocity.y, newVelocity.z);
+
+
+        position.x = wall.transform.position.x;
+
+        if(hasHitTarget){
+            hasHitTarget = false;
+            PointSystem.instance.AddPoint();
+            trailRenderer.time += .2f;
+            source.PlayOneShot(targetClip[UnityEngine.Random.Range(0, targetClip.Length-1)]);
+
+        }else{
+
+            PointSystem.instance.ResetScore();
+            Target.instance.ResetComboAndSize();
+
+
         }
-
-
-        transform.position = startPos.position;
-        trailRenderer.Clear();
-
-        position = startPos.position;
-        velocity = new Vector3(-20, 0, 0);
-        ResetCombo();
-        OnMissed?.Invoke();
-        yield return null;
-        gameObject.GetComponent<Ball>().enabled = false;
+        source.PlayOneShot(wallBounceClip[UnityEngine.Random.Range(0, wallBounceClip.Length-1)]);
 
     }
+
 
     public bool hasHitTarget = false;
 

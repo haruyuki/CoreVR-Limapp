@@ -14,6 +14,8 @@ public class Target : MonoBehaviour
     public Transform wall;
     public Vector3 wallPos;
     public Vector3 wallOffset;
+
+    public float wallSpeedFactor;
     private static Vector3 wallResetPos;
 
 
@@ -40,7 +42,7 @@ public class Target : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        wall.position = Vector3.Lerp(wall.position, wallPos, Time.deltaTime);
+        wall.position = Vector3.Lerp(wall.position, wallPos, Time.deltaTime*wallSpeedFactor);
     }
 
     void OnEnable()
