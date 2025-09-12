@@ -8175,6 +8175,16 @@ PrefabInstance:
       propertyPath: m_Name
       value: Wall
       objectReference: {fileID: 0}
+    - target: {fileID: 8443527955925457360, guid: 63768e6657ba820438758c627d2f2181,
+        type: 3}
+      propertyPath: m_LocalScale.y
+      value: 0.63
+      objectReference: {fileID: 0}
+    - target: {fileID: 8443527955925457360, guid: 63768e6657ba820438758c627d2f2181,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -0.19
+      objectReference: {fileID: 0}
     - target: {fileID: 3483493898026059868, guid: 63768e6657ba820438758c627d2f2181,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -8327,12 +8337,12 @@ PrefabInstance:
     - target: {fileID: 4796727595566529008, guid: f5b933c85e38da34a9fe1dc7751b4bbb,
         type: 3}
       propertyPath: velocity.x
-      value: -13.7
+      value: -19.53
       objectReference: {fileID: 0}
     - target: {fileID: 4796727595566529008, guid: f5b933c85e38da34a9fe1dc7751b4bbb,
         type: 3}
       propertyPath: velocity.y
-      value: 7
+      value: 5.85
       objectReference: {fileID: 0}
     - target: {fileID: 4796727595566529008, guid: f5b933c85e38da34a9fe1dc7751b4bbb,
         type: 3}
@@ -8343,6 +8353,11 @@ PrefabInstance:
         type: 3}
       propertyPath: ballSpread.y
       value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 4796727595566529008, guid: f5b933c85e38da34a9fe1dc7751b4bbb,
+        type: 3}
+      propertyPath: velocity.z
+      value: -4.12
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f5b933c85e38da34a9fe1dc7751b4bbb, type: 3}
