@@ -126,7 +126,7 @@ public class Ball : MonoBehaviour
     public void HitWall(){
 
         //select new position
-        Vector3 towardsPos = new Vector3(0,10+UnityEngine.Random.Range(0, ballSpread.x),UnityEngine.Random.Range(-ballSpread.y/2, ballSpread.y/2));
+        Vector3 towardsPos = new Vector3(0,5+UnityEngine.Random.Range(0, ballSpread.x),UnityEngine.Random.Range(-ballSpread.y/2, ballSpread.y/2));
         Vector3 towardsStart = (towardsPos - new Vector3(position.x, 0, position.z)).normalized;
         Vector3 newVelocity = towardsStart * velocity.magnitude;
 

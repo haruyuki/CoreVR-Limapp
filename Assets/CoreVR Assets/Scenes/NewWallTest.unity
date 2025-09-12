@@ -8262,12 +8262,12 @@ PrefabInstance:
     - target: {fileID: 4796727595750066145, guid: f5b933c85e38da34a9fe1dc7751b4bbb,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: -20
+      value: -9.6
       objectReference: {fileID: 0}
     - target: {fileID: 4796727595750066145, guid: f5b933c85e38da34a9fe1dc7751b4bbb,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0
+      value: -2
       objectReference: {fileID: 0}
     - target: {fileID: 4796727595750066145, guid: f5b933c85e38da34a9fe1dc7751b4bbb,
         type: 3}
@@ -8324,6 +8324,26 @@ PrefabInstance:
       propertyPath: wall
       value: 
       objectReference: {fileID: 1420261252}
+    - target: {fileID: 4796727595566529008, guid: f5b933c85e38da34a9fe1dc7751b4bbb,
+        type: 3}
+      propertyPath: velocity.x
+      value: -13.7
+      objectReference: {fileID: 0}
+    - target: {fileID: 4796727595566529008, guid: f5b933c85e38da34a9fe1dc7751b4bbb,
+        type: 3}
+      propertyPath: velocity.y
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 4796727595566529008, guid: f5b933c85e38da34a9fe1dc7751b4bbb,
+        type: 3}
+      propertyPath: ballSpread.x
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 4796727595566529008, guid: f5b933c85e38da34a9fe1dc7751b4bbb,
+        type: 3}
+      propertyPath: ballSpread.y
+      value: 2
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f5b933c85e38da34a9fe1dc7751b4bbb, type: 3}
 --- !u!1001 &5826018363236284501
