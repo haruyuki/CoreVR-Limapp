@@ -8,7 +8,7 @@ EditorBuildSettings:
   - enabled: 0
     path: Assets/Examples/Scenes/Example.unity
     guid: 17d10320f148ee64488837d5f8008cfd
-  - enabled: 1
+  - enabled: 0
     path: Assets/CoreVR Assets/Scenes/JaiTest.unity
     guid: f1cc6f48f56268443a433a973f7f3e31
   - enabled: 0
@@ -20,4 +20,10 @@ EditorBuildSettings:
   - enabled: 0
     path: Assets/CoreVR Assets/Scenes/ControllerTest.unity
     guid: f6d382f52adbb3849a2b1f398f62b14b
+  - enabled: 0
+    path: Assets/CoreVR Assets/Scenes/NewWallTest.unity
+    guid: d8fb5440dbce28d49afe7e5f7d56db54
+  - enabled: 1
+    path: Assets/CoreVR Assets/Scenes/ScaleTest.unity
+    guid: f99a02d42ce8b0d4ca9bac6859977d3c
   m_configObjects: {}
