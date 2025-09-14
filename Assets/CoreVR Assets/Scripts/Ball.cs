@@ -33,7 +33,7 @@ public class Ball : MonoBehaviour
 
     //combo speed
     [Header("Combo Speed")]
-    public float baseSpeed = 0f;
+    private float baseSpeed = 0f;
 
     [Tooltip("Extra speed added per combo hit.")]
     public float extraSpeedPerCombo = 50.0f;
