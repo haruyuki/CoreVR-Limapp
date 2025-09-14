@@ -72,7 +72,7 @@ public class Target : MonoBehaviour
 
         if (pointSystem != null)
         {
-            //pointSystem.AddPoint();
+            pointSystem.AddPoint();
             Debug.Log("plus a point");
         }
 

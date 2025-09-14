@@ -121,9 +121,8 @@ public class Ball : MonoBehaviour
         //select new position
         Vector3 towardsPos = new Vector3(0,ballSpreadHeightStart+UnityEngine.Random.Range(0, ballSpread.x),UnityEngine.Random.Range(-ballSpread.y/2, ballSpread.y/2));
         Vector3 towardsStart = (towardsPos - new Vector3(position.x, position.y, position.z)).normalized;
-        Vector3 newVelocity = towardsStart * velocity.magnitude;
 
-        velocity = new Vector3(newVelocity.x, newVelocity.y, newVelocity.z);
+        velocity = towardsStart * velocity.magnitude;
 
 
         position.x = wall.transform.position.x;
@@ -138,10 +137,10 @@ public class Ball : MonoBehaviour
 
             //PointSystem.instance.ResetScore();
             Target.instance.ResetComboAndSize();
+            source.PlayOneShot(wallBounceClip[UnityEngine.Random.Range(0, wallBounceClip.Length-1)]);
 
 
         }
-        source.PlayOneShot(wallBounceClip[UnityEngine.Random.Range(0, wallBounceClip.Length-1)]);
 
     }
 
