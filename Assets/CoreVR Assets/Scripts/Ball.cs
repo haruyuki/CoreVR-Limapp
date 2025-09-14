@@ -151,22 +151,25 @@ public class Ball : MonoBehaviour
     public void SetCombo(int combo)
     {
         _currentCombo = Mathf.Max(0, combo);
-        ApplyComboSpeed();
+        velocity = GetSpeedVector();
         hasHitTarget = true;
     }
 
     public void ResetCombo()
     {
         _currentCombo = 0;
-        ApplyComboSpeed();
+        velocity = GetSpeedVector();
+
     }
 
-    private void ApplyComboSpeed()
-    {
+    public Vector3 GetSpeedVector(){
+
         Vector3 dir = (velocity.sqrMagnitude > 0.0001f) ? velocity.normalized : Vector3.left;
         float targetSpeed = Mathf.Max(0f, baseSpeed + _currentCombo * extraSpeedPerCombo);
-        velocity = dir * targetSpeed;
+        return dir * targetSpeed;
     }
+
+   
 
 }
 
