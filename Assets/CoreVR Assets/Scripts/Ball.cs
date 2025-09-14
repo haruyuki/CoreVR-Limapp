@@ -6,7 +6,7 @@ public class Ball : MonoBehaviour
 {
     public Vector3 position;
     public Vector3 velocity = new Vector3(0,10,0);
-    private Vector3 startVelocity;
+    public Vector3 startVelocity;
     public static event System.Action OnMissed;
 
     public float g = 9.1f; //gravity
@@ -69,7 +69,7 @@ public class Ball : MonoBehaviour
         if (position.x < oobX)
         {
             //StartCoroutine(returnToStart());
-            PointSystem.instance.ResetScore();
+            //PointSystem.instance.ResetScore();
             //transform.position = startPos;
                         trailRenderer.Clear();
 
@@ -90,7 +90,7 @@ public class Ball : MonoBehaviour
         if (Mathf.Abs(position.z) > oobZ)
         {
             //StartCoroutine(returnToStart());
-            PointSystem.instance.ResetScore();
+            //PointSystem.instance.ResetScore();
             //transform.position = startPos;
                         trailRenderer.Clear();
                         trailRenderer.time = .5f;
@@ -119,8 +119,8 @@ public class Ball : MonoBehaviour
         velocity = new Vector3(velocity.x, -velocity.y, velocity.z);
         position.y = floorY;
         source.PlayOneShot(floorBounceClip[UnityEngine.Random.Range(0, floorBounceClip.Length-1)]);
-        GameObject fp = Instantiate(floorHitParticle, transform.position, floorHitParticle.transform.rotation);
-        fp.SetActive(true);
+        //GameObject fp = Instantiate(floorHitParticle, transform.position, floorHitParticle.transform.rotation);
+        //fp.SetActive(true);
     }
 
     public void HitWall(){
@@ -137,7 +137,7 @@ public class Ball : MonoBehaviour
 
         if(hasHitTarget){
             hasHitTarget = false;
-            PointSystem.instance.AddPoint();
+            //PointSystem.instance.AddPoint();
             trailRenderer.time += .2f;
             source.PlayOneShot(targetClip[UnityEngine.Random.Range(0, targetClip.Length-1)]);
 
