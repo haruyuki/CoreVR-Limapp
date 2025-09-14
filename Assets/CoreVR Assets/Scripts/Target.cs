@@ -72,7 +72,7 @@ public class Target : MonoBehaviour
 
         if (pointSystem != null)
         {
-            //pointSystem.AddPoint();
+            pointSystem.AddPoint();
             Debug.Log("plus a point");
         }
 
@@ -104,7 +104,7 @@ public class Target : MonoBehaviour
             elapsed += Time.deltaTime;
             yield return null;
         }
-        transform.position = new Vector3(transform.position.x, startPos.y + UnityEngine.Random.Range(-1f,1f), startPos.z + UnityEngine.Random.Range(-1f,1f));
+        transform.position = new Vector3(transform.position.x, startPos.y + UnityEngine.Random.Range(-.5f,1f), startPos.z + UnityEngine.Random.Range(-1f,1f));
                 yield return null;
 
         transform.GetComponent<MeshCollider>().enabled = (true);
