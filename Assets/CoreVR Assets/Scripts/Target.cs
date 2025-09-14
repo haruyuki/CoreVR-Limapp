@@ -26,6 +26,12 @@ public class Target : MonoBehaviour
     private int _combo = 0;
     private Vector3 startPos;
 
+    [Header("Target Respawn")]
+    public float upperLimit;
+    public float lowerLimit;
+    public float rightLimit;
+    public float leftLimit;
+
     public static Target instance;
 
     // Start is called before the first frame update
@@ -104,7 +110,7 @@ public class Target : MonoBehaviour
             elapsed += Time.deltaTime;
             yield return null;
         }
-        transform.position = new Vector3(transform.position.x, startPos.y + UnityEngine.Random.Range(-.5f,1f), startPos.z + UnityEngine.Random.Range(-1f,1f));
+        transform.position = new Vector3(transform.position.x, startPos.y + UnityEngine.Random.Range(lowerLimit, upperLimit), startPos.z + UnityEngine.Random.Range(leftLimit, rightLimit));
                 yield return null;
 
         transform.GetComponent<MeshCollider>().enabled = (true);
