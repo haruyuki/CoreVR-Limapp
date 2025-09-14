@@ -6061,7 +6061,7 @@ PrefabInstance:
     - target: {fileID: 4796727595566529008, guid: f5b933c85e38da34a9fe1dc7751b4bbb,
         type: 3}
       propertyPath: ballSpread.x
-      value: 6
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 4796727595566529008, guid: f5b933c85e38da34a9fe1dc7751b4bbb,
         type: 3}
@@ -6093,6 +6093,11 @@ PrefabInstance:
       propertyPath: floorHitParticle
       value: 
       objectReference: {fileID: 632055925}
+    - target: {fileID: 4796727595566529008, guid: f5b933c85e38da34a9fe1dc7751b4bbb,
+        type: 3}
+      propertyPath: ballSpreadHeightStart
+      value: 6
+      objectReference: {fileID: 0}
     - target: {fileID: 4796727597081910399, guid: f5b933c85e38da34a9fe1dc7751b4bbb,
         type: 3}
       propertyPath: m_LocalRotation.x

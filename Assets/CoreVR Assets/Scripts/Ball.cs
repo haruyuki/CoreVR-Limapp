@@ -17,6 +17,7 @@ public class Ball : MonoBehaviour
     public float oobX = -10;
     public float oobZ = 0;
 
+    public float ballSpreadHeightStart = 4;
     public Vector2 ballSpread = new Vector2(2,1); //height, width
 
     public AudioClip[] floorBounceClip;
@@ -68,42 +69,15 @@ public class Ball : MonoBehaviour
 
         if (position.x < oobX)
         {
-            //StartCoroutine(returnToStart());
             //PointSystem.instance.ResetScore();
-            //transform.position = startPos;
-                        trailRenderer.Clear();
-
-            position = startPos.position;
-                    transform.position = position;
-                    trailRenderer.time = .5f;
-
-
-            velocity = startVelocity;
-            Target.instance.ResetComboAndSize();
-            trailRenderer.Clear();
-
-
-
+            ResetBall();
 
         }
 
         if (Mathf.Abs(position.z) > oobZ)
         {
-            //StartCoroutine(returnToStart());
             //PointSystem.instance.ResetScore();
-            //transform.position = startPos;
-                        trailRenderer.Clear();
-                        trailRenderer.time = .5f;
-
-            position = startPos.position;
-            transform.position = position;
-
-            velocity = startVelocity;
-            Target.instance.ResetComboAndSize();
-            trailRenderer.Clear();
-
-
-
+            ResetBall();
 
         }
 
@@ -145,7 +119,7 @@ public class Ball : MonoBehaviour
 
         bounces = 0;
         //select new position
-        Vector3 towardsPos = new Vector3(0,4+UnityEngine.Random.Range(0, ballSpread.x),UnityEngine.Random.Range(-ballSpread.y/2, ballSpread.y/2));
+        Vector3 towardsPos = new Vector3(0,ballSpreadHeightStart+UnityEngine.Random.Range(0, ballSpread.x),UnityEngine.Random.Range(-ballSpread.y/2, ballSpread.y/2));
         Vector3 towardsStart = (towardsPos - new Vector3(position.x, position.y, position.z)).normalized;
         Vector3 newVelocity = towardsStart * velocity.magnitude;
 
