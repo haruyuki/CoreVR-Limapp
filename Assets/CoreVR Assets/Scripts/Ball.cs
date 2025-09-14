@@ -119,8 +119,8 @@ public class Ball : MonoBehaviour
         velocity = new Vector3(velocity.x, -velocity.y, velocity.z);
         position.y = floorY;
         source.PlayOneShot(floorBounceClip[UnityEngine.Random.Range(0, floorBounceClip.Length-1)]);
-        //GameObject fp = Instantiate(floorHitParticle, transform.position, floorHitParticle.transform.rotation);
-        //fp.SetActive(true);
+        GameObject fp = Instantiate(floorHitParticle, transform.position, floorHitParticle.transform.rotation);
+        fp.SetActive(true);
     }
 
     public void HitWall(){
@@ -143,7 +143,7 @@ public class Ball : MonoBehaviour
 
         }else{
 
-            PointSystem.instance.ResetScore();
+            //PointSystem.instance.ResetScore();
             Target.instance.ResetComboAndSize();
 
 
