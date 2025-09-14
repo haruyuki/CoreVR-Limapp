@@ -136,6 +136,11 @@ public class Target : MonoBehaviour
         transform.localScale = _initialScale;
         //wall.position = wallResetPos;
         wallPos = wallResetPos;
+
+        if (pointSystem != null)
+        {
+            pointSystem.ResetScore();
+        }
         
     }
 }
