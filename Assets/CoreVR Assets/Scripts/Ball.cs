@@ -113,18 +113,37 @@ public class Ball : MonoBehaviour
 
     }
 
+    public void ResetBall(){
+
+            trailRenderer.Clear();
+            position = startPos.position;
+            transform.position = position;
+            trailRenderer.time = .5f;
 
 
+            velocity = startVelocity;
+            Target.instance.ResetComboAndSize();
+            trailRenderer.Clear();
+            bounces = 0;
+
+    }
+
+
+    public int maxBounces = 4;
+    private float bounces = 0;
     public void HitFloor(){
         velocity = new Vector3(velocity.x, -velocity.y, velocity.z);
         position.y = floorY;
         source.PlayOneShot(floorBounceClip[UnityEngine.Random.Range(0, floorBounceClip.Length-1)]);
         GameObject fp = Instantiate(floorHitParticle, transform.position, floorHitParticle.transform.rotation);
         fp.SetActive(true);
+        bounces += 1;
+        if(bounces > maxBounces){ ResetBall();}
     }
 
     public void HitWall(){
 
+        bounces = 0;
         //select new position
         Vector3 towardsPos = new Vector3(0,4+UnityEngine.Random.Range(0, ballSpread.x),UnityEngine.Random.Range(-ballSpread.y/2, ballSpread.y/2));
         Vector3 towardsStart = (towardsPos - new Vector3(position.x, position.y, position.z)).normalized;
