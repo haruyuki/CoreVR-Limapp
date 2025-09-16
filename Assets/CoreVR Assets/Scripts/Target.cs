@@ -84,8 +84,7 @@ public class Target : MonoBehaviour
 
         //combo when hit will shrink
         _combo++;
-        float factor = Mathf.Max(minScaleFactor, 1f - _combo * shrinkPerHit);
-        transform.localScale = new Vector3(_initialScale.x * factor, _initialScale.y, _initialScale.z * factor);
+        
 
 
         if (ballScript != null)
@@ -110,8 +109,7 @@ public class Target : MonoBehaviour
             elapsed += Time.deltaTime;
             yield return null;
         }
-        transform.position = new Vector3(transform.position.x, startPos.y + UnityEngine.Random.Range(lowerLimit, upperLimit), startPos.z + UnityEngine.Random.Range(leftLimit, rightLimit));
-                yield return null;
+
 
         transform.GetComponent<MeshCollider>().enabled = (true);
         transform.GetComponent<Renderer>().enabled = (true);
@@ -126,6 +124,7 @@ public class Target : MonoBehaviour
         if (ballScript != null)
         {
             BreakTarget(ballScript);
+            ballScript.HitWall();
         }
     }
     
