@@ -60,4 +60,12 @@ public class PointSystem : MonoBehaviour
             scoreNum.gameObject.SetActive(visible);
         }
     }
+
+    public void hitWall(int id){
+        Debug.Log($"Ball hit wall {id}");
+    }
+
+    public static void HitWall(int id){
+        instance.hitWall(id);
+    }
 }

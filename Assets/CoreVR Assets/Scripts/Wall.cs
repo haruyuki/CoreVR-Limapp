@@ -4,8 +4,10 @@ using System.Collections.Generic;
 
 using UnityEngine;
 
-public class Target : MonoBehaviour
+public class Wall : MonoBehaviour
 {
+    public int id = 0;
+
     public GameObject ball;
     public GameObject brokenParticle;
     public PointSystem pointSystem;
@@ -32,13 +34,11 @@ public class Target : MonoBehaviour
     public float rightLimit;
     public float leftLimit;
 
-    public static Target instance;
 
     // Start is called before the first frame update
     void Start()
     {
         _initialScale = transform.localScale; // remember starting size
-        instance = this;
         wallResetPos = wall.position;
         wallPos = wallResetPos;
         startPos = transform.position;
@@ -51,20 +51,7 @@ public class Target : MonoBehaviour
         wall.position = Vector3.Lerp(wall.position, wallPos, Time.deltaTime*wallSpeedFactor);
     }
 
-    void OnEnable()
-    {
-        Ball.OnMissed += HandleBallMissed;
-    }
-
-    void OnDisable()
-    {
-        Ball.OnMissed -= HandleBallMissed;
-    }
-
-    private void HandleBallMissed()
-    {
-        ResetComboAndSize();
-    }
+    
 
 
     void BreakTarget(Ball ballScript)
@@ -92,9 +79,9 @@ public class Target : MonoBehaviour
             ballScript.SetCombo(_combo);
 
         }
-        wallPos += wallOffset;
+       // wallPos += wallOffset;
         StartCoroutine(respawn());
-        transform.GetComponent<MeshCollider>().enabled = (false);
+        //transform.GetComponent<MeshCollider>().enabled = (false);
         transform.GetComponent<Renderer>().enabled = (false);
 
 
@@ -111,7 +98,7 @@ public class Target : MonoBehaviour
         }
 
 
-        transform.GetComponent<MeshCollider>().enabled = (true);
+        //transform.GetComponent<MeshCollider>().enabled = (true);
         transform.GetComponent<Renderer>().enabled = (true);
 
     }
@@ -125,6 +112,7 @@ public class Target : MonoBehaviour
         {
             BreakTarget(ballScript);
             ballScript.HitWall();
+            PointSystem.HitWall(id);
         }
     }
     
@@ -132,7 +120,6 @@ public class Target : MonoBehaviour
     public void ResetComboAndSize()
     {
         _combo = 0;
-        transform.localScale = _initialScale;
         //wall.position = wallResetPos;
         wallPos = wallResetPos;
 

@@ -13,7 +13,6 @@ public class Ball : MonoBehaviour
 
     public float floorY = 0;
     public GameObject floorHitParticle;
-    public GameObject wall;
     public float oobX = -10;
     public float oobZ = 0;
 
@@ -44,8 +43,7 @@ public class Ball : MonoBehaviour
     void Start()
     {
         source = GetComponent<AudioSource>();
-        if (baseSpeed <= 0f)
-            baseSpeed = velocity.magnitude;
+        baseSpeed = velocity.magnitude;
 
         position = transform.position;
         startVelocity = velocity;
@@ -61,11 +59,13 @@ public class Ball : MonoBehaviour
            HitFloor();
         }
 
+        /*
         if(position.x > wall.transform.position.x)
         {
            HitWall();
 
         }
+        */
 
         if (position.x < oobX)
         {
@@ -96,7 +96,7 @@ public class Ball : MonoBehaviour
 
 
             velocity = startVelocity;
-            Target.instance.ResetComboAndSize();
+            //Target.instance.ResetComboAndSize();
             trailRenderer.Clear();
             bounces = 0;
 
@@ -125,7 +125,7 @@ public class Ball : MonoBehaviour
         velocity = towardsStart * velocity.magnitude;
 
 
-        position.x = wall.transform.position.x;
+        //position.x = wall.transform.position.x;
 
         if(hasHitTarget){
             hasHitTarget = false;
@@ -136,7 +136,7 @@ public class Ball : MonoBehaviour
         }else{
 
             //PointSystem.instance.ResetScore();
-            Target.instance.ResetComboAndSize();
+           // Target.instance.ResetComboAndSize();
             source.PlayOneShot(wallBounceClip[UnityEngine.Random.Range(0, wallBounceClip.Length-1)]);
 
 
@@ -164,7 +164,7 @@ public class Ball : MonoBehaviour
 
     public Vector3 GetSpeedVector(){
 
-        Vector3 dir = (velocity.sqrMagnitude > 0.0001f) ? velocity.normalized : Vector3.left;
+        Vector3 dir = velocity.normalized;
         float targetSpeed = Mathf.Max(0f, baseSpeed + _currentCombo * extraSpeedPerCombo);
         return dir * targetSpeed;
     }
