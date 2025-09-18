@@ -9,12 +9,13 @@ Material:
   m_PrefabAsset: {fileID: 0}
   m_Name: Floor
   m_Shader: {fileID: 4800000, guid: 917b37092bae034459c28c00a3a19b54, type: 3}
-  m_ShaderKeywords: VIGNETTE_MASKED _SMOOTHNESS_TEXTURE_ALBEDO_CHANNEL_A
+  m_ShaderKeywords: _SMOOTHNESS_TEXTURE_ALBEDO_CHANNEL_A
   m_LightmapFlags: 4
   m_EnableInstancingVariants: 0
   m_DoubleSidedGI: 0
-  m_CustomRenderQueue: -1
-  stringTagMap: {}
+  m_CustomRenderQueue: 3000
+  stringTagMap:
+    RenderType: Transparent
   disabledShaderPasses: []
   m_SavedProperties:
     serializedVersion: 3
@@ -812,7 +813,7 @@ Material:
     - _ColorMask: 15
     - _ContinuousDissolve: 0
     - _Cull: 2
-    - _Cutoff: 0.001
+    - _Cutoff: 0
     - _DebugCameraData: 0
     - _DebugEnabled: 0
     - _DebugLightingData: 0
@@ -1004,7 +1005,7 @@ Material:
     - _EnableFlipbook: 0
     - _EnableGITDEmission: 0
     - _EnableGITDEmission1: 0
-    - _EnableLighting: 1
+    - _EnableLighting: 0
     - _EnableMetallic: 0
     - _EnableMirrorOptions: 0
     - _EnableMirrorTexture: 0
@@ -1272,7 +1273,7 @@ Material:
     - _MetallicTintMapUV: 0
     - _Mirror: 0
     - _MirrorTextureUV: 0
-    - _Mode: 3
+    - _Mode: 2
     - _ModelAngleMax: 90
     - _ModelAngleMin: 45
     - _MonochromeLighting: 0
@@ -1552,7 +1553,7 @@ Material:
     - _SpecularToonStart1: 0.95
     - _SpecularType: 1
     - _SpecularType1: 1
-    - _SrcBlend: 1
+    - _SrcBlend: 5
     - _SrcBlendAlpha: 1
     - _SrcBlendAlphaFA: 0
     - _SrcBlendFA: 1
@@ -1644,8 +1645,8 @@ Material:
     - _VertexUnwrap: 0
     - _ZClip: 1
     - _ZTest: 4
-    - _ZWrite: 1
-    - _commentIfZero_EnableOutlinePass: 1
+    - _ZWrite: 0
+    - _commentIfZero_EnableOutlinePass: 0
     - _e2gai: 2
     - _e2gci: 2
     - _egai: 2
@@ -1770,11 +1771,11 @@ Material:
     - m_end_subsurface: 0
     - m_end_vertexManipulation: 0
     - m_end_voronoiRandom: 0
-    - m_lightingOptions: 0
+    - m_lightingOptions: 1
     - m_mainOptions: 1
     - m_outlineOptions: 1
     - m_renderingOptions: 0
-    - m_start_Alpha: 0
+    - m_start_Alpha: 1
     - m_start_BlackLight: 0
     - m_start_Blur: 0
     - m_start_BonusSliders: 0
@@ -1950,7 +1951,7 @@ Material:
     - _BumpMapPan: {r: 0, g: 0, b: 0, a: 0}
     - _ClearcoatMapPan: {r: 0, g: 0, b: 0, a: 0}
     - _ClippingMaskPan: {r: 0, g: 0, b: 0, a: 0}
-    - _Color: {r: 0, g: 0.10256433, b: 0.1509434, a: 0.0627451}
+    - _Color: {r: 0.05660379, g: 0.7020856, b: 1, a: 0.0627451}
     - _Color2nd: {r: 1, g: 1, b: 1, a: 1}
     - _Color3rd: {r: 1, g: 1, b: 1, a: 1}
     - _DecalColor: {r: 1, g: 1, b: 1, a: 1}
