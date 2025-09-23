@@ -25,7 +25,6 @@ public class Ball : MonoBehaviour
 
     public TrailRenderer trailRenderer;
 
-
     private AudioSource source;
 
     public Transform startPos;
@@ -39,6 +38,10 @@ public class Ball : MonoBehaviour
 
     private int _currentCombo = 0;
 
+    public GameObject ball;
+    private GameObject blueBall;
+    private GameObject greenBall;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -47,6 +50,10 @@ public class Ball : MonoBehaviour
 
         position = transform.position;
         startVelocity = velocity;
+
+        blueBall = ball.transform.GetChild(0).gameObject;
+        greenBall = ball.transform.GetChild(1).gameObject;
+        ChooseBall();
     }
 
     // Update is called once per frame
@@ -87,8 +94,19 @@ public class Ball : MonoBehaviour
 
     }
 
-    public void ResetBall(){
+    private void ChooseBall() {
+        int choice = Random.Range(0,2);
+        if (choice == 0) {
+            blueBall.SetActive(true);
+            greenBall.SetActive(false);
+        } else {
+            greenBall.SetActive(true);
+            blueBall.SetActive(false);
+        }
+    }
 
+    public void ResetBall(){
+            ChooseBall();
             trailRenderer.Clear();
             position = startPos.position;
             transform.position = position;
@@ -116,7 +134,7 @@ public class Ball : MonoBehaviour
     }
 
     public void HitWall(){
-
+        ChooseBall();
         bounces = 0;
         //select new position
         Vector3 towardsPos = new Vector3(0,ballSpreadHeightStart+UnityEngine.Random.Range(0, ballSpread.x),UnityEngine.Random.Range(-ballSpread.y/2, ballSpread.y/2));
@@ -124,9 +142,11 @@ public class Ball : MonoBehaviour
 
         velocity = towardsStart * velocity.magnitude;
 
+        source.PlayOneShot(wallBounceClip[UnityEngine.Random.Range(0, wallBounceClip.Length-1)]);
+
 
         //position.x = wall.transform.position.x;
-
+/*
         if(hasHitTarget){
             hasHitTarget = false;
             //PointSystem.instance.AddPoint();
@@ -141,7 +161,7 @@ public class Ball : MonoBehaviour
 
 
         }
-
+*/
     }
 
 
