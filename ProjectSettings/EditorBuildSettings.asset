@@ -26,7 +26,10 @@ EditorBuildSettings:
   - enabled: 0
     path: Assets/CoreVR Assets/Scenes/ScaleTest.unity
     guid: f99a02d42ce8b0d4ca9bac6859977d3c
-  - enabled: 1
+  - enabled: 0
     path: Assets/CoreVR Assets/Scenes/ManyWalls.unity
     guid: 44831cfb17c6d9d44b9646b6610efa59
+  - enabled: 1
+    path: Assets/CoreVR Assets/Scenes/Scene10.unity
+    guid: fec37569aa0d9cc4c9a8ac57de3cf7ec
   m_configObjects: {}
