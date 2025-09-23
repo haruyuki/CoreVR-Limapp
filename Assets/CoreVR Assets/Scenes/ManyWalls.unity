@@ -720,7 +720,7 @@ PrefabInstance:
     - target: {fileID: 8123819897882984753, guid: 59a3671def234964ebdd0ee227fdad86,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0
+      value: 0.06
       objectReference: {fileID: 0}
     - target: {fileID: 8123819897882984753, guid: 59a3671def234964ebdd0ee227fdad86,
         type: 3}
@@ -5722,12 +5722,12 @@ PrefabInstance:
     - target: {fileID: 3483493898026059868, guid: 63768e6657ba820438758c627d2f2181,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 16.41
+      value: 19.18
       objectReference: {fileID: 0}
     - target: {fileID: 3483493898026059868, guid: 63768e6657ba820438758c627d2f2181,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: -5.88
+      value: -5.6
       objectReference: {fileID: 0}
     - target: {fileID: 3483493898026059868, guid: 63768e6657ba820438758c627d2f2181,
         type: 3}
@@ -6841,6 +6841,26 @@ PrefabInstance:
       propertyPath: m_Layer
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1260162968516261969, guid: 22276a8657744e04cba8ad0a2caf4195,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0.01745245
+      objectReference: {fileID: 0}
+    - target: {fileID: 1260162968516261969, guid: 22276a8657744e04cba8ad0a2caf4195,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: -2
+      objectReference: {fileID: 0}
+    - target: {fileID: 1260162968516261969, guid: 22276a8657744e04cba8ad0a2caf4195,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 0.99984777
+      objectReference: {fileID: 0}
+    - target: {fileID: 1260162968516261968, guid: 22276a8657744e04cba8ad0a2caf4195,
+        type: 3}
+      propertyPath: m_UsePerEyeCameras
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 22276a8657744e04cba8ad0a2caf4195, type: 3}
 --- !u!4 &1299788773 stripped
@@ -7483,7 +7503,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 81df337fc34073c4b98e2e44451222e0, type: 2}
+  - {fileID: 2100000, guid: 46848555c4377ab4688f31fbd8206ec1, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -7520,7 +7540,7 @@ Transform:
   m_GameObject: {fileID: 1637287391}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 12.04, y: 0, z: 0}
-  m_LocalScale: {x: 31.91702, y: 1, z: 1.2148703}
+  m_LocalScale: {x: 31.65, y: 1, z: 1.6}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 7
