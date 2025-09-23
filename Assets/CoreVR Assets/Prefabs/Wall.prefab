@@ -1888,6 +1888,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d63194a9b45c12f41977c3c979e507d0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  id: 0
   ball: {fileID: 0}
   brokenParticle: {fileID: 0}
   pointSystem: {fileID: 0}
