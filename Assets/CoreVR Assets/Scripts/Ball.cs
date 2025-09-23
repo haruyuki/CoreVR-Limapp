@@ -42,6 +42,9 @@ public class Ball : MonoBehaviour
     private GameObject blueBall;
     private GameObject greenBall;
 
+    public enum BallColor { Blue, Green }
+    public BallColor currentColor = BallColor.Blue;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -99,9 +102,11 @@ public class Ball : MonoBehaviour
         if (choice == 0) {
             blueBall.SetActive(true);
             greenBall.SetActive(false);
+            currentColor = BallColor.Blue;
         } else {
             greenBall.SetActive(true);
             blueBall.SetActive(false);
+            currentColor = BallColor.Green;
         }
     }
 
@@ -112,12 +117,15 @@ public class Ball : MonoBehaviour
             transform.position = position;
             trailRenderer.time = .5f;
 
-
             velocity = startVelocity;
             //Target.instance.ResetComboAndSize();
             trailRenderer.Clear();
             bounces = 0;
 
+            if (Wall.instance != null)
+            {
+                Wall.instance.ResetComboAndSize();
+            }
     }
 
 

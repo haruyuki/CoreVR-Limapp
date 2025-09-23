@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
+using UnityEngine.UI; 
 
 public class PointSystem : MonoBehaviour
 {
@@ -11,7 +12,10 @@ public class PointSystem : MonoBehaviour
     public Animator scoreAnimator; 
 
     public static PointSystem instance;
-   
+
+    public Image scoreBar; 
+    public int maxScore = 10; //bar is full at 10
+
     void Start()
     {
         instance = this;
@@ -43,9 +47,13 @@ public class PointSystem : MonoBehaviour
 
     void UpdateScoreUI()
     {
-        if(scoreNum !=null)
+        if(scoreNum != null)
         {
             scoreNum.text = "x" + score;
+        }
+        if(scoreBar != null && maxScore > 0)
+        {
+            scoreBar.fillAmount = Mathf.Clamp01((float)score / maxScore);
         }
     }
 

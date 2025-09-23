@@ -34,10 +34,13 @@ public class Wall : MonoBehaviour
     public float rightLimit;
     public float leftLimit;
 
+    public static Wall instance;
+
 
     // Start is called before the first frame update
     void Start()
     {
+        instance = this;
         _initialScale = transform.localScale; // remember starting size
         wallResetPos = wall.position;
         wallPos = wallResetPos;
@@ -110,9 +113,23 @@ public class Wall : MonoBehaviour
         var ballScript = other.GetComponentInParent<Ball>();
         if (ballScript != null)
         {
-            BreakTarget(ballScript);
-            ballScript.HitWall();
-            PointSystem.HitWall(id);
+            //the matching logic
+            bool correctWall = 
+                (ballScript.currentColor == Ball.BallColor.Green && id == 1) ||
+                (ballScript.currentColor == Ball.BallColor.Blue && id == 0);
+
+            if (correctWall)
+            {
+                BreakTarget(ballScript);
+                ballScript.HitWall();
+                PointSystem.HitWall(id);
+            }
+            else
+            {
+                //wrong wall boi
+                ResetComboAndSize();
+                ballScript.ResetCombo();
+            }
         }
     }
     
