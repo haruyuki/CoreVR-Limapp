@@ -12,10 +12,20 @@ public class JaiRacket : MonoBehaviour
     public float doubleHitBuffer = .1f;
     private float doubleHit = 0;
 
+    private Vector3 lastPos;
+    public Vector3 racketVelocity;
+
+    public float velocityMultiplier = 5;
+
     void Update(){
         if(doubleHit > 0){
             doubleHit -= Time.deltaTime;
         }
+
+        racketVelocity = (transform.position - lastPos);
+        lastPos = transform.position;
+
+
     }
 
     private void OnTriggerEnter(Collider other)
@@ -35,7 +45,8 @@ public class JaiRacket : MonoBehaviour
         Vector3 towardsTarget = (target.position + new Vector3(0, 3, 0) - ball.position).normalized;
         Vector3 hitDir = normalDir * (side > 0 ? 1 : -1);
 
+        float velocityDot = Vector3.Dot(racketVelocity.normalized, ball.velocity.normalized);
 
-        ball.velocity = ball.GetSpeedVector().magnitude * Vector3.Lerp(hitDir, towardsTarget, aimAssist).normalized;
+        ball.velocity = (ball.GetSpeedVector().magnitude + velocityDot*racketVelocity.magnitude*velocityMultiplier) * Vector3.Lerp(hitDir, towardsTarget, aimAssist).normalized;
     }
 }
