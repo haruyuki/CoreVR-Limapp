@@ -47,7 +47,8 @@ public class JaiRacket : MonoBehaviour
         Vector3 hitDir = normalDir * (side > 0 ? 1 : -1);
 
         float velocityDot = -Vector3.Dot(racketVelocity.normalized, ball.velocity.normalized);
+        Vector3 velocityVector = velocityDot*racketVelocity.magnitude*velocityMultiplier * Vector3.Scale(Vector3.Lerp(hitDir, towardsTarget, aimAssist).normalized, new Vector3(1,0,1));
 
-        ball.velocity = (ball.GetSpeedVector().magnitude + velocityDot*racketVelocity.magnitude*velocityMultiplier) * Vector3.Lerp(hitDir, towardsTarget, aimAssist).normalized;
+        ball.velocity = (ball.GetSpeedVector().magnitude * Vector3.Lerp(hitDir, towardsTarget, aimAssist).normalized) + velocityVector;
     }
 }
