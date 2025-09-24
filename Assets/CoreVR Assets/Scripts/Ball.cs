@@ -148,7 +148,7 @@ public class Ball : MonoBehaviour
         Vector3 towardsPos = new Vector3(0,ballSpreadHeightStart+UnityEngine.Random.Range(0, ballSpread.x),UnityEngine.Random.Range(-ballSpread.y/2, ballSpread.y/2));
         Vector3 towardsStart = (towardsPos - new Vector3(position.x, position.y, position.z)).normalized;
 
-        velocity = towardsStart * velocity.magnitude;
+        velocity = towardsStart * startVelocity.magnitude;
 
         source.PlayOneShot(wallBounceClip[UnityEngine.Random.Range(0, wallBounceClip.Length-1)]);
 
