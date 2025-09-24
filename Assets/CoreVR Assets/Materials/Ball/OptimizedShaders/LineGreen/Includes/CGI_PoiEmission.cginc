@@ -169,18 +169,18 @@ float3 calculateEmissionNew(in float3 baseColor, inout float4 finalColor)
         if (float(0))
         {
             #if defined(PROP_EMISSIONSCROLLINGCURVE) || !defined(OPTIMIZER_ENABLED)
-                emissionStrength0 *= UNITY_SAMPLE_TEX2D_SAMPLER(_EmissionScrollingCurve, _MainTex, TRANSFORM_TEX(poiMesh.uv[float(0)], _EmissionScrollingCurve) + (dot(pos, float4(0,-10,0,0).xyz) * float(20)) + _Time.x * float(10)).r;
+                emissionStrength0 *= UNITY_SAMPLE_TEX2D_SAMPLER(_EmissionScrollingCurve, _MainTex, TRANSFORM_TEX(poiMesh.uv[float(0)], _EmissionScrollingCurve) + (dot(pos, float4(10,0,0,0).xyz) * float(20)) + _Time.x * float(10)).r;
             #endif
         }
         else
         {
-            emissionStrength0 *= calculateScrollingEmission(float4(0,-10,0,0).xyz, float(10), float(20), float(10), float(0), pos);
+            emissionStrength0 *= calculateScrollingEmission(float4(10,0,0,0).xyz, float(10), float(20), float(10), float(0), pos);
         }
     }
     
-    if (float(0))
+    if (float(1))
     {
-        emissionStrength0 *= calculateBlinkingEmission(float(0), float(1), float(4), float(0));
+        emissionStrength0 *= calculateBlinkingEmission(float(0), float(1), float(2), float(0));
     }
     emissionColor0 = hueShift(emissionColor0, frac(float(0) + float(0) * _Time.x) * float(0));
     #if defined(PROP_EMISSIONMASK) || !defined(OPTIMIZER_ENABLED)
