@@ -178,9 +178,9 @@ float3 calculateEmissionNew(in float3 baseColor, inout float4 finalColor)
         }
     }
     
-    if (float(0))
+    if (float(1))
     {
-        emissionStrength0 *= calculateBlinkingEmission(float(0), float(1), float(4), float(0));
+        emissionStrength0 *= calculateBlinkingEmission(float(0), float(1), float(2), float(0));
     }
     emissionColor0 = hueShift(emissionColor0, frac(float(0) + float(0) * _Time.x) * float(0));
     #if defined(PROP_EMISSIONMASK) || !defined(OPTIMIZER_ENABLED)
