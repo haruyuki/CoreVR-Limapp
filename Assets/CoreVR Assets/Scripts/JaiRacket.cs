@@ -9,11 +9,21 @@ public class JaiRacket : MonoBehaviour
     public Transform normal;
     public Transform target;
     public float aimAssist = .5f;
+    public float doubleHitBuffer = .1f;
+    private float doubleHit = 0;
+
+    void Update(){
+        if(doubleHit > 0){
+            doubleHit -= Time.deltaTime;
+        }
+    }
 
     private void OnTriggerEnter(Collider other)
     {
         Ball ball = other.GetComponent<Ball>();
-        if (ball == null) return;
+        if (ball == null || doubleHit > 0) return;
+
+        doubleHit = doubleHitBuffer;
 
         audioSource.PlayOneShot(racketHit);
 
