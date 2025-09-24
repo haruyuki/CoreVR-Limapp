@@ -388,6 +388,7 @@ MonoBehaviour:
   scoreAnimator: {fileID: 315223314}
   scoreBar: {fileID: 0}
   maxScore: 10
+  walls: []
 --- !u!114 &315223316
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -512,6 +513,12 @@ CanvasRenderer:
 --- !u!1 &385882805 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 4168147575821224500, guid: 63768e6657ba820438758c627d2f2181,
+    type: 3}
+  m_PrefabInstance: {fileID: 839788112}
+  m_PrefabAsset: {fileID: 0}
+--- !u!4 &385882806 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 6460073570093627877, guid: 63768e6657ba820438758c627d2f2181,
     type: 3}
   m_PrefabInstance: {fileID: 839788112}
   m_PrefabAsset: {fileID: 0}
@@ -5757,6 +5764,12 @@ GameObject:
     type: 3}
   m_PrefabInstance: {fileID: 839788112}
   m_PrefabAsset: {fileID: 0}
+--- !u!4 &739857686 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 3483493897549220913, guid: 63768e6657ba820438758c627d2f2181,
+    type: 3}
+  m_PrefabInstance: {fileID: 839788112}
+  m_PrefabAsset: {fileID: 0}
 --- !u!114 &739857690
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6053,6 +6066,9 @@ MonoBehaviour:
   scoreAnimator: {fileID: 0}
   scoreBar: {fileID: 1010932565}
   maxScore: 10
+  walls:
+  - {fileID: 385882806}
+  - {fileID: 739857686}
 --- !u!4 &874014023
 Transform:
   m_ObjectHideFlags: 0

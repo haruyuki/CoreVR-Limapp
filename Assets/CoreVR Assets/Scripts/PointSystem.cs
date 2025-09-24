@@ -16,6 +16,8 @@ public class PointSystem : MonoBehaviour
     public Image scoreBar; 
     public int maxScore = 10; //bar is full at 10
 
+    public Transform[] walls;
+
     void Start()
     {
         instance = this;
