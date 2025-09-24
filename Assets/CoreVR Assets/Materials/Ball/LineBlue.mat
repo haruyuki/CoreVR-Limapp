@@ -1286,7 +1286,7 @@ Material:
     - m_start_rimHueShift: 0
     - m_start_rimLightOptions: 0
     - m_start_rimWidthNoise: 0
-    - m_start_scrollingEmissionOptions: 0
+    - m_start_scrollingEmissionOptions: 1
     - m_start_scrollingEmissionOptions1: 0
     - m_start_specular: 0
     - m_start_specular1: 0
