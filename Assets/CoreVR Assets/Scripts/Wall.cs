@@ -129,6 +129,10 @@ public class Wall : MonoBehaviour
                 //wrong wall boi
                 ResetComboAndSize();
                 ballScript.ResetCombo();
+                ballScript.HitWall();
+                PointSystem.HitWall(id);
+
+
             }
         }
     }
