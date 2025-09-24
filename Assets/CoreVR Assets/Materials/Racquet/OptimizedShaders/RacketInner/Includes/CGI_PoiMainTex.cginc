@@ -72,7 +72,7 @@ void initTextureData(inout float4 albedo, inout float4 mainTexture, inout float3
         {
             vertexColor = GammaToLinearSpace(poiMesh.vertexColor.rgb);
         }
-        albedo = float4(mainTexture.rgb * max(float4(0.5152035,0.5152035,0.5152035,1).rgb, float3(0.000000001, 0.000000001, 0.000000001)) * lerp(1, vertexColor, float(0)), mainTexture.a * max(float4(0.5152035,0.5152035,0.5152035,1).a, 0.0000001));
+        albedo = float4(mainTexture.rgb * max(float4(0.7433497,0.7433497,0.7433497,1).rgb, float3(0.000000001, 0.000000001, 0.000000001)) * lerp(1, vertexColor, float(0)), mainTexture.a * max(float4(0.7433497,0.7433497,0.7433497,1).a, 0.0000001));
         #if defined(POI_LIGHTING) && defined(FORWARD_BASE_PASS)
             applyShadeMaps(albedo);
         #endif

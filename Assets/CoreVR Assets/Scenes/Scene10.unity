@@ -221,6 +221,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4796727595566529008, guid: f5b933c85e38da34a9fe1dc7751b4bbb,
         type: 3}
+      propertyPath: floorBounceClip.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4796727595566529008, guid: f5b933c85e38da34a9fe1dc7751b4bbb,
+        type: 3}
       propertyPath: floorHitParticle
       value: 
       objectReference: {fileID: 632055925}
@@ -289,6 +294,11 @@ PrefabInstance:
       propertyPath: extraSpeedPerCombo
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4796727595566529008, guid: f5b933c85e38da34a9fe1dc7751b4bbb,
+        type: 3}
+      propertyPath: floorBounceClip.Array.data[0]
+      value: 
+      objectReference: {fileID: 8300000, guid: a58715d2b202be941a1b0ab70a1f18f8, type: 3}
     - target: {fileID: 4796727595566529014, guid: f5b933c85e38da34a9fe1dc7751b4bbb,
         type: 3}
       propertyPath: m_Enabled
@@ -784,7 +794,7 @@ PrefabInstance:
     - target: {fileID: 8123819897882984753, guid: 59a3671def234964ebdd0ee227fdad86,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.06
+      value: -0.045
       objectReference: {fileID: 0}
     - target: {fileID: 8123819897882984753, guid: 59a3671def234964ebdd0ee227fdad86,
         type: 3}

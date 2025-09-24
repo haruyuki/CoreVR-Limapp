@@ -34,9 +34,6 @@
 	#include "CGI_PoiLighting.cginc"
 #endif
 #include "CGI_PoiMainTex.cginc"
-#ifdef _GLOSSYREFLECTIONS_OFF
-	#include "CGI_PoiRimLighting.cginc"
-#endif
 #include "CGI_PoiBlending.cginc"
 #include "CGI_PoiGrab.cginc"
 #include "CGI_PoiAlphaToCoverage.cginc"

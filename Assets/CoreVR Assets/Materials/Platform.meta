@@ -1,9 +1,5 @@
 fileFormatVersion: 2
-<<<<<<<< HEAD:Assets/CoreVR Assets/Shader.meta
-guid: a254d7e3d6b75b147b2726878d9d5691
-========
-guid: 63a98688c9ea6d748838569bc913bc84
->>>>>>>> master:Assets/CoreVR Assets/Materials/Platform.meta
+guid: 3d18ace8182dedc48913ffde353dc6a5
 folderAsset: yes
 DefaultImporter:
   externalObjects: {}
