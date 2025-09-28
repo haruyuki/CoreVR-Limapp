@@ -350,6 +350,26 @@ PrefabInstance:
       propertyPath: m_LocalPosition.x
       value: 0.342
       objectReference: {fileID: 0}
+    - target: {fileID: 4796727595566529013, guid: f5b933c85e38da34a9fe1dc7751b4bbb,
+        type: 3}
+      propertyPath: m_Parameters.widthCurve.m_Curve.Array.data[0].value
+      value: 0.07803511
+      objectReference: {fileID: 0}
+    - target: {fileID: 4796727595566529013, guid: f5b933c85e38da34a9fe1dc7751b4bbb,
+        type: 3}
+      propertyPath: m_Parameters.colorGradient.key1.r
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4796727595566529013, guid: f5b933c85e38da34a9fe1dc7751b4bbb,
+        type: 3}
+      propertyPath: m_Parameters.colorGradient.key1.g
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4796727595566529013, guid: f5b933c85e38da34a9fe1dc7751b4bbb,
+        type: 3}
+      propertyPath: m_Parameters.colorGradient.key1.b
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f5b933c85e38da34a9fe1dc7751b4bbb, type: 3}
 --- !u!4 &214061022 stripped

@@ -45,7 +45,7 @@ public class PointSystem : MonoBehaviour
     public void ResetScore() 
     {
         if(score > 0){
-            score -= 1;
+            score -= .5f;
         }
         combo = 0;
         UpdateScoreUI();

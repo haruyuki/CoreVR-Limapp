@@ -103,10 +103,12 @@ public class Ball : MonoBehaviour
             blueBall.SetActive(true);
             greenBall.SetActive(false);
             currentColor = BallColor.Blue;
+            trailRenderer.startColor = new Color(0,0,1);
         } else {
             greenBall.SetActive(true);
             blueBall.SetActive(false);
             currentColor = BallColor.Green;
+            trailRenderer.startColor = new Color(0,1,0);
         }
     }
 
@@ -147,6 +149,10 @@ public class Ball : MonoBehaviour
         //select new position
         Vector3 towardsPos = new Vector3(0,ballSpreadHeightStart+UnityEngine.Random.Range(0, ballSpread.x),UnityEngine.Random.Range(-ballSpread.y/2, ballSpread.y/2));
         Vector3 towardsStart = (towardsPos - new Vector3(position.x, position.y, position.z)).normalized;
+
+        if(velocity.y < 0){
+            towardsStart.y *= -1;
+        }
 
         velocity = towardsStart * startVelocity.magnitude;
 
