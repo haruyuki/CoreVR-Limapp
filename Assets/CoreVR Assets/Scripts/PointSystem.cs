@@ -6,7 +6,8 @@ using UnityEngine.UI;
 
 public class PointSystem : MonoBehaviour
 {
-    public int score = 0;
+    public float combo = 0;
+    public float score = 0;
     public TMP_Text scoreText;
     public TMP_Text scoreNum;
     public Animator scoreAnimator; 
@@ -14,7 +15,7 @@ public class PointSystem : MonoBehaviour
     public static PointSystem instance;
 
     public Image scoreBar; 
-    public int maxScore = 10; //bar is full at 10
+    public int maxScore = 20;
 
     public Transform[] walls;
 
@@ -27,6 +28,7 @@ public class PointSystem : MonoBehaviour
 
     public void AddPoint()
     {
+        combo++;
         score++;
         UpdateScoreUI();
         if (score > 0)
@@ -42,7 +44,10 @@ public class PointSystem : MonoBehaviour
 
     public void ResetScore() 
     {
-        score = 0;
+        if(score > 0){
+            score -= 1;
+        }
+        combo = 0;
         UpdateScoreUI();
         SetScoreTextVisible(false); 
     }
@@ -51,7 +56,7 @@ public class PointSystem : MonoBehaviour
     {
         if(scoreNum != null)
         {
-            scoreNum.text = "x" + score;
+            scoreNum.text = "x" + combo;
         }
         if(scoreBar != null && maxScore > 0)
         {
