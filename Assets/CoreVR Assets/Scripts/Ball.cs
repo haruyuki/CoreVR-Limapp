@@ -147,7 +147,7 @@ public class Ball : MonoBehaviour
         ChooseBall();
         bounces = 0;
         //select new position
-        Vector3 towardsPos = new Vector3(0,ballSpreadHeightStart+UnityEngine.Random.Range(0, ballSpread.x),UnityEngine.Random.Range(-ballSpread.y/2, ballSpread.y/2));
+        Vector3 towardsPos = new Vector3(0,ballSpreadHeightStart+UnityEngine.Random.Range(0, ballSpread.x),(position.z>0) ? -ballSpread.y/2 : ballSpread.y/2);
         Vector3 towardsStart = (towardsPos - new Vector3(position.x, position.y, position.z)).normalized;
 
         if(velocity.y < 0){
