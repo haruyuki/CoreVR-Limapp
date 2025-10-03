@@ -13,11 +13,11 @@ Material:
   m_LightmapFlags: 1
   m_EnableInstancingVariants: 0
   m_DoubleSidedGI: 0
-  m_CustomRenderQueue: 3000
+  m_CustomRenderQueue: 2010
   stringTagMap:
     OptimizedShaderFolder: WallGreen
     OriginalShader: ".poiyomi/\u2022 Poiyomi Toon \u2022"
-    RenderType: Transparent
+    RenderType: Opaque
   disabledShaderPasses: []
   m_SavedProperties:
     serializedVersion: 3

@@ -7,17 +7,17 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: WallBlue
-  m_Shader: {fileID: 4800000, guid: e7cb9b2ce6927784d83470c76a5af81f, type: 3}
+  m_Name: BrightWallBlue
+  m_Shader: {fileID: 4800000, guid: 87a6b979254ba5541a80773b5475ae69, type: 3}
   m_ShaderKeywords: 
   m_LightmapFlags: 1
   m_EnableInstancingVariants: 0
   m_DoubleSidedGI: 0
-  m_CustomRenderQueue: 2010
+  m_CustomRenderQueue: 3000
   stringTagMap:
-    OptimizedShaderFolder: WallBlue
+    OptimizedShaderFolder: BrightWallBlue
     OriginalShader: ".poiyomi/\u2022 Poiyomi Toon \u2022"
-    RenderType: Opaque
+    RenderType: Transparent
   disabledShaderPasses: []
   m_SavedProperties:
     serializedVersion: 3
@@ -1976,7 +1976,7 @@ Material:
     - _EmissionBlink: {r: 0.2, g: 0, b: 3.1415932, a: 0}
     - _EmissionCenterOutAddAudioLink: {r: 0, g: 0, b: 0, a: 0}
     - _EmissionCenterOutAddAudioLink1: {r: 0, g: 0, b: 0, a: 0}
-    - _EmissionColor: {r: 0, g: 0.027413996, b: 0.1792453, a: 1}
+    - _EmissionColor: {r: 0, g: 0.13351114, b: 0.8773585, a: 1}
     - _EmissionColor1: {r: 0, g: 0.2353096, b: 1, a: 1}
     - _EmissionMap1Pan: {r: 0, g: 0, b: 0, a: 0}
     - _EmissionMapPan: {r: 0, g: 0, b: 0, a: 0}

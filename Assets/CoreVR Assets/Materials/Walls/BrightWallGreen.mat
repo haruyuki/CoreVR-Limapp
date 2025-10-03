@@ -7,17 +7,17 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: WallBlue
-  m_Shader: {fileID: 4800000, guid: e7cb9b2ce6927784d83470c76a5af81f, type: 3}
+  m_Name: BrightWallGreen
+  m_Shader: {fileID: 4800000, guid: 01ca1593289671f478e1b3da917859cb, type: 3}
   m_ShaderKeywords: 
   m_LightmapFlags: 1
   m_EnableInstancingVariants: 0
   m_DoubleSidedGI: 0
-  m_CustomRenderQueue: 2010
+  m_CustomRenderQueue: 3000
   stringTagMap:
-    OptimizedShaderFolder: WallBlue
+    OptimizedShaderFolder: BrightWallGreen
     OriginalShader: ".poiyomi/\u2022 Poiyomi Toon \u2022"
-    RenderType: Opaque
+    RenderType: Transparent
   disabledShaderPasses: []
   m_SavedProperties:
     serializedVersion: 3
@@ -232,8 +232,8 @@ Material:
         m_Offset: {x: 0, y: 0}
     - _EmissionMap1:
         m_Texture: {fileID: 2800000, guid: 384585c1d1eb2ae4293c37bc13542310, type: 3}
-        m_Scale: {x: 0.75, y: 1}
-        m_Offset: {x: 0.125, y: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
     - _EmissionMask:
         m_Texture: {fileID: 0}
         m_Scale: {x: 1, y: 1}
@@ -1808,7 +1808,7 @@ Material:
     - m_start_bakedLighting: 0
     - m_start_blending: 0
     - m_start_blinkingEmissionOptions: 0
-    - m_start_blinkingEmissionOptions1: 1
+    - m_start_blinkingEmissionOptions1: 0
     - m_start_brdf: 0
     - m_start_clearCoat: 0
     - m_start_crossfade: 0
@@ -1976,8 +1976,8 @@ Material:
     - _EmissionBlink: {r: 0.2, g: 0, b: 3.1415932, a: 0}
     - _EmissionCenterOutAddAudioLink: {r: 0, g: 0, b: 0, a: 0}
     - _EmissionCenterOutAddAudioLink1: {r: 0, g: 0, b: 0, a: 0}
-    - _EmissionColor: {r: 0, g: 0.027413996, b: 0.1792453, a: 1}
-    - _EmissionColor1: {r: 0, g: 0.2353096, b: 1, a: 1}
+    - _EmissionColor: {r: 0, g: 0.6037736, b: 0, a: 1}
+    - _EmissionColor1: {r: 0.004883388, g: 0.6226415, b: 0, a: 1}
     - _EmissionMap1Pan: {r: 0, g: 0, b: 0, a: 0}
     - _EmissionMapPan: {r: 0, g: 0, b: 0, a: 0}
     - _EmissionMap_ScrollRotate: {r: 0, g: 0, b: 0, a: 0}
@@ -2160,7 +2160,7 @@ Material:
     - _ega5: {r: 1, g: 0, b: 0, a: 0}
     - _ega6: {r: 1, g: 0, b: 0, a: 0}
     - _ega7: {r: 1, g: 0, b: 0, a: 0}
-    - _egc0: {r: 1, g: 1, b: 1, a: 0}
+    - _egc0: {r: 0.13724583, g: 0.87058824, b: 1, a: 0.26471353}
     - _egc1: {r: 1, g: 1, b: 1, a: 1}
     - _egc2: {r: 1, g: 1, b: 1, a: 0}
     - _egc3: {r: 1, g: 1, b: 1, a: 0}
