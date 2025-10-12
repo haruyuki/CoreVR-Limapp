@@ -28,12 +28,6 @@ public class Wall : MonoBehaviour
     private int _combo = 0;
     private Vector3 startPos;
 
-    [Header("Target Respawn")]
-    public float upperLimit;
-    public float lowerLimit;
-    public float rightLimit;
-    public float leftLimit;
-
     public static Wall instance;
 
 
@@ -113,6 +107,7 @@ public class Wall : MonoBehaviour
         var ballScript = other.GetComponentInParent<Ball>();
         if (ballScript != null)
         {
+            /*
             //the matching logic
             bool correctWall = 
                 (ballScript.currentColor == Ball.BallColor.Green && id == 1) ||
@@ -133,7 +128,10 @@ public class Wall : MonoBehaviour
                 PointSystem.HitWall(id);
 
 
-            }
+            }*/
+            BreakTarget(ballScript);
+            ballScript.HitWall();
+            PointSystem.HitWall(id);
         }
     }
     
