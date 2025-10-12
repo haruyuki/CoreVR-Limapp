@@ -970,7 +970,7 @@ Material:
     - _EmissionReplace: 0
     - _EmissionScrollingOffset: 0
     - _EmissionScrollingOffset1: 0
-    - _EmissionScrollingUseCurve: 1
+    - _EmissionScrollingUseCurve: 0
     - _EmissionScrollingUseCurve1: 0
     - _EmissionScrollingVertexColor: 0
     - _EmissionScrollingVertexColor1: 0
@@ -983,11 +983,11 @@ Material:
     - _EmissiveBlink_Min1: 0
     - _EmissiveBlink_Velocity: 4
     - _EmissiveBlink_Velocity1: 1
-    - _EmissiveScroll_Interval: 10
+    - _EmissiveScroll_Interval: 0.08
     - _EmissiveScroll_Interval1: 20
-    - _EmissiveScroll_Velocity: 10
+    - _EmissiveScroll_Velocity: 0.06
     - _EmissiveScroll_Velocity1: 10
-    - _EmissiveScroll_Width: 10
+    - _EmissiveScroll_Width: 1
     - _EmissiveScroll_Width1: 10
     - _EnableAudioLink: 0
     - _EnableAudioLinkDebug: 0
@@ -1983,7 +1983,7 @@ Material:
     - _EmissionMap_ScrollRotate: {r: 0, g: 0, b: 0, a: 0}
     - _EmissionMask1Pan: {r: 0, g: 0, b: 0, a: 0}
     - _EmissionMaskPan: {r: 0, g: 0, b: 0, a: 0}
-    - _EmissiveScroll_Direction: {r: 0, g: -10, b: 0, a: 0}
+    - _EmissiveScroll_Direction: {r: 0, g: 1, b: 0, a: 0}
     - _EmissiveScroll_Direction1: {r: 0, g: -10, b: 0, a: 0}
     - _FlipbookColor: {r: 1, g: 1, b: 1, a: 1}
     - _FlipbookCrossfadeRange: {r: 0.75, g: 1, b: 0, a: 1}

@@ -177,15 +177,15 @@ float3 calculateEmissionNew(in float3 baseColor, inout float4 finalColor)
             pos = poiMesh.vertexColor.rgb;
         }
         
-        if (float(1))
+        if (float(0))
         {
             #if defined(PROP_EMISSIONSCROLLINGCURVE) || !defined(OPTIMIZER_ENABLED)
-                emissionStrength0 *= UNITY_SAMPLE_TEX2D_SAMPLER(_EmissionScrollingCurve, _MainTex, TRANSFORM_TEX(poiMesh.uv[float(0)], _EmissionScrollingCurve) + (dot(pos, float4(0,-10,0,0).xyz) * float(10)) + _Time.x * float(10)).r;
+                emissionStrength0 *= UNITY_SAMPLE_TEX2D_SAMPLER(_EmissionScrollingCurve, _MainTex, TRANSFORM_TEX(poiMesh.uv[float(0)], _EmissionScrollingCurve) + (dot(pos, float4(0,1,0,0).xyz) * float(0.08)) + _Time.x * float(0.06)).r;
             #endif
         }
         else
         {
-            emissionStrength0 *= calculateScrollingEmission(float4(0,-10,0,0).xyz, float(10), float(10), float(10), float(0), pos);
+            emissionStrength0 *= calculateScrollingEmission(float4(0,1,0,0).xyz, float(0.06), float(0.08), float(1), float(0), pos);
         }
     }
     
