@@ -6,6 +6,8 @@ using UnityEngine.UI;
 
 public class PointSystem : MonoBehaviour
 {
+    public GameObject spaceParticles;
+
     public float combo = 0;
     public float score = 0;
     public TMP_Text scoreText;
@@ -19,6 +21,7 @@ public class PointSystem : MonoBehaviour
 
     public Transform wall;
     public Ball ball;
+
     void Start()
     {
         instance = this;
@@ -93,6 +96,7 @@ public class PointSystem : MonoBehaviour
 
         if(ball.spaceBall){
             AddPoint();
+            Instantiate(spaceParticles, ball.position, Quaternion.identity);
         }else{
             ResetScore();
         }
