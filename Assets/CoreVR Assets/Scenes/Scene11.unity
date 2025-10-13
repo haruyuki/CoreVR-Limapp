@@ -11570,7 +11570,7 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
-  m_Sprite: {fileID: 21300000, guid: 0669cccab7def324193a567fec38a72a, type: 3}
+  m_Sprite: {fileID: 21300000, guid: c5821f6de2e364143bc53a8cd15388ef, type: 3}
   m_Type: 3
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -12390,7 +12390,7 @@ PrefabInstance:
     - target: {fileID: 3483493898026059868, guid: 5ebcf21bef1d49a4a930bb1fc8261fad,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 17.42
+      value: 22.14
       objectReference: {fileID: 0}
     - target: {fileID: 3483493898026059868, guid: 5ebcf21bef1d49a4a930bb1fc8261fad,
         type: 3}
@@ -26856,7 +26856,7 @@ MonoBehaviour:
   pointSystem: {fileID: 874014022}
   wall: {fileID: 1507801057}
   wallPos: {x: 0, y: 0, z: 0}
-  wallOffset: {x: 0, y: 0, z: -0.3}
+  wallOffset: {x: -0.3, y: 0, z: 0}
   wallSpeedFactor: 0.1
   shrinkPerHit: 0.1
   minScaleFactor: 0.2
