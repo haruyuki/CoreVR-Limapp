@@ -552,6 +552,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0c1768758a15c7f44a148492f8270c27, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  spaceParticles: {fileID: 0}
   combo: 0
   score: 0
   scoreText: {fileID: 936112879}
@@ -971,7 +972,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!199 &599924055
 ParticleSystemRenderer:
   serializedVersion: 6
@@ -1048,7 +1049,7 @@ ParticleSystem:
   cullingMode: 0
   ringBufferMode: 0
   ringBufferLoopRange: {x: 0, y: 1}
-  looping: 1
+  looping: 0
   prewarm: 0
   playOnAwake: 1
   useUnscaledTime: 0
@@ -10685,6 +10686,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0c1768758a15c7f44a148492f8270c27, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  spaceParticles: {fileID: 599924054}
   combo: 0
   score: 0
   scoreText: {fileID: 936112879}
