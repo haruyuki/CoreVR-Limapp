@@ -60,22 +60,11 @@ public class Wall : MonoBehaviour
 
 
 
-        if (pointSystem != null)
-        {
-            pointSystem.AddPoint();
-            Debug.Log("plus a point");
-        }
-
         //combo when hit will shrink
         _combo++;
         
 
 
-        if (ballScript != null)
-        {
-            ballScript.SetCombo(_combo);
-
-        }
        // wallPos += wallOffset;
         StartCoroutine(respawn());
         //transform.GetComponent<MeshCollider>().enabled = (false);
@@ -142,10 +131,6 @@ public class Wall : MonoBehaviour
         //wall.position = wallResetPos;
         wallPos = wallResetPos;
 
-        if (pointSystem != null)
-        {
-            pointSystem.ResetScore();
-        }
         
     }
 }
