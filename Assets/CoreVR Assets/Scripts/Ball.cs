@@ -83,9 +83,8 @@ public class Ball : MonoBehaviour
             position = position.normalized * spaceDistance;
 
             PointSystem.HitSpace();
+            ResetBall();
 
-
-            HitWall();
         }
 
         if (position.x < oobX)
@@ -136,10 +135,6 @@ public class Ball : MonoBehaviour
             trailRenderer.Clear();
             bounces = 0;
 
-            if (Wall.instance != null)
-            {
-                Wall.instance.ResetComboAndSize();
-            }
     }
 
 

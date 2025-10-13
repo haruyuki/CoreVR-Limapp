@@ -10694,7 +10694,7 @@ MonoBehaviour:
   scoreAnimator: {fileID: 0}
   scoreBar: {fileID: 1010932565}
   maxScore: 20
-  wall: {fileID: 1978690141}
+  wall: {fileID: 1941145577}
   ball: {fileID: 1915345019}
 --- !u!4 &874014023
 Transform:
@@ -26850,8 +26850,8 @@ MonoBehaviour:
   pointSystem: {fileID: 874014022}
   wall: {fileID: 1978690141}
   wallPos: {x: 0, y: 0, z: 0}
-  wallOffset: {x: 0, y: 0, z: 0}
-  wallSpeedFactor: 0
+  wallOffset: {x: 0, y: 0, z: -0.3}
+  wallSpeedFactor: 0.1
   shrinkPerHit: 0.1
   minScaleFactor: 0.2
 --- !u!1001 &1960952610

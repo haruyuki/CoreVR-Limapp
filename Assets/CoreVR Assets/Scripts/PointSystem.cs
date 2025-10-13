@@ -19,7 +19,7 @@ public class PointSystem : MonoBehaviour
     public Image scoreBar; 
     public int maxScore = 20;
 
-    public Transform wall;
+    public Wall wall;
     public Ball ball;
 
     void Start()
@@ -86,8 +86,10 @@ public class PointSystem : MonoBehaviour
         Debug.Log($"Ball hit wall {id}, spaceBall is {ball.spaceBall}");
         if(!ball.spaceBall){
             AddPoint();
+            wall.AddPoint();
         }else{
             ResetScore();
+            wall.ResetScore();
         }
     }
 
@@ -99,6 +101,8 @@ public class PointSystem : MonoBehaviour
             Instantiate(spaceParticles, ball.position, Quaternion.identity);
         }else{
             ResetScore();
+            wall.ResetScore();
+
         }
 
     }

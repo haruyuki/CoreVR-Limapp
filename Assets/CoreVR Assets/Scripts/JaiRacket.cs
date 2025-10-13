@@ -48,7 +48,7 @@ public class JaiRacket : MonoBehaviour
 
         }
 
-        Vector3 towardsTarget = (PointSystem.instance.wall.position + new Vector3(0, 3, 0) - ball.position).normalized;
+        Vector3 towardsTarget = (PointSystem.instance.wall.transform.position + new Vector3(0, 3, 0) - ball.position).normalized;
         Vector3 hitDir = normalDir * (side > 0 ? 1 : -1);
 
         float velocityDot = -Vector3.Dot(racketVelocity.normalized, ball.velocity.normalized);

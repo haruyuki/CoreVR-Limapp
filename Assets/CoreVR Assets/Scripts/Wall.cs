@@ -60,12 +60,6 @@ public class Wall : MonoBehaviour
 
 
 
-        //combo when hit will shrink
-        _combo++;
-        
-
-
-       // wallPos += wallOffset;
         StartCoroutine(respawn());
         //transform.GetComponent<MeshCollider>().enabled = (false);
         transform.GetComponent<Renderer>().enabled = (false);
@@ -124,9 +118,16 @@ public class Wall : MonoBehaviour
 
         }
     }
+
+    public void AddPoint(){
+        _combo++;
+
+       wallPos += wallOffset;
+
+    }
     
     //Miss/Fail/Restore size at the end of the round
-    public void ResetComboAndSize()
+    public void ResetScore()
     {
         _combo = 0;
         //wall.position = wallResetPos;
