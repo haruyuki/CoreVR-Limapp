@@ -4,6 +4,8 @@ using UnityEngine;
 [RequireComponent(typeof(AudioSource))]
 public class Ball : MonoBehaviour
 {
+    public float spaceDistance = 25;
+
     public Vector3 position;
     public Vector3 velocity = new Vector3(0,10,0);
     public Vector3 startVelocity;
@@ -42,9 +44,9 @@ public class Ball : MonoBehaviour
     private GameObject blueBall;
     private GameObject greenBall;
 
-    public enum BallColor { Blue, Green }
-    public BallColor currentColor = BallColor.Blue;
+    public bool spaceBall = false;
 
+   
     // Start is called before the first frame update
     void Start()
     {
@@ -76,6 +78,10 @@ public class Ball : MonoBehaviour
 
         }
         */
+        if(position.magnitude > spaceDistance){
+            HitWall();
+            PointSystem.HitSpace();
+        }
 
         if (position.x < oobX)
         {
@@ -102,12 +108,13 @@ public class Ball : MonoBehaviour
         if (choice == 0) {
             blueBall.SetActive(true);
             greenBall.SetActive(false);
-            currentColor = BallColor.Blue;
+            spaceBall = true;
             trailRenderer.startColor = new Color(0,0,1);
         } else {
             greenBall.SetActive(true);
             blueBall.SetActive(false);
-            currentColor = BallColor.Green;
+            spaceBall = false;
+
             trailRenderer.startColor = new Color(0,1,0);
         }
     }
@@ -181,20 +188,6 @@ public class Ball : MonoBehaviour
 
     public bool hasHitTarget = false;
 
-    //Combo speed
-    public void SetCombo(int combo)
-    {
-        _currentCombo = Mathf.Max(0, combo);
-        velocity = GetSpeedVector();
-        hasHitTarget = true;
-    }
-
-    public void ResetCombo()
-    {
-        _currentCombo = 0;
-        velocity = GetSpeedVector();
-
-    }
 
     public Vector3 GetSpeedVector(){
 

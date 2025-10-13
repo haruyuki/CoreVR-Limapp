@@ -17,8 +17,8 @@ public class PointSystem : MonoBehaviour
     public Image scoreBar; 
     public int maxScore = 20;
 
-    public Transform[] walls;
-
+    public Transform wall;
+    public Ball ball;
     void Start()
     {
         instance = this;
@@ -30,7 +30,6 @@ public class PointSystem : MonoBehaviour
     {
         combo++;
         score++;
-        UpdateScoreUI();
         if (score > 0)
         {
             SetScoreTextVisible(true); 
@@ -40,6 +39,8 @@ public class PointSystem : MonoBehaviour
             //scoreAnimator.SetTrigger("pointGain");
             //was too energetic
         }
+
+        UpdateScoreUI();
     }
 
     public void ResetScore() 
@@ -50,6 +51,9 @@ public class PointSystem : MonoBehaviour
         combo = 0;
         UpdateScoreUI();
         SetScoreTextVisible(false); 
+
+        UpdateScoreUI();
+
     }
 
     void UpdateScoreUI()
@@ -78,9 +82,27 @@ public class PointSystem : MonoBehaviour
 
     public void hitWall(int id){
         Debug.Log($"Ball hit wall {id}");
+        if(!ball.spaceBall){
+            AddPoint();
+        }else{
+            ResetScore();
+        }
+    }
+
+    public void hitSpace(){
+        if(ball.spaceBall){
+            AddPoint();
+        }else{
+            ResetScore();
+        }
+
     }
 
     public static void HitWall(int id){
         instance.hitWall(id);
+    }
+
+    public static void HitSpace(){
+        instance.hitSpace();
     }
 }

@@ -8,6 +8,7 @@ public class JaiRacket : MonoBehaviour
     public AudioClip racketHit;
     public Transform normal;
     public float aimAssist = .5f;
+    private float currentAimAssist = .5f;
     public float doubleHitBuffer = .1f;
     private float doubleHit = 0;
 
@@ -41,13 +42,17 @@ public class JaiRacket : MonoBehaviour
         Vector3 normalDir = (normal.position - transform.position).normalized;
         float side = -Vector3.Dot(normalDir, ball.velocity.normalized);
 
-        Transform target = PointSystem.instance.walls[(ball.currentColor == Ball.BallColor.Blue) ? 0 : 1];
+        currentAimAssist = 0;
+        if(!ball.spaceBall){
+                    currentAimAssist = aimAssist;
 
-        Vector3 towardsTarget = (target.position + new Vector3(0, 3, 0) - ball.position).normalized;
+        }
+
+        Vector3 towardsTarget = (PointSystem.instance.wall.position + new Vector3(0, 3, 0) - ball.position).normalized;
         Vector3 hitDir = normalDir * (side > 0 ? 1 : -1);
 
         float velocityDot = -Vector3.Dot(racketVelocity.normalized, ball.velocity.normalized);
-        Vector3 velocityVector = velocityDot*racketVelocity.magnitude*velocityMultiplier * Vector3.Scale(Vector3.Lerp(hitDir, towardsTarget, aimAssist).normalized, new Vector3(1,0,1));
+        Vector3 velocityVector = velocityDot*racketVelocity.magnitude*velocityMultiplier * Vector3.Scale(Vector3.Lerp(hitDir, towardsTarget, currentAimAssist).normalized, new Vector3(1,0,1));
 
         ball.velocity = (ball.GetSpeedVector().magnitude * Vector3.Lerp(hitDir, towardsTarget, aimAssist).normalized) + velocityVector;
     }
