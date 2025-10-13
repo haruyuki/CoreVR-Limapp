@@ -46,6 +46,7 @@ public class Ball : MonoBehaviour
 
     public bool spaceBall = false;
 
+
    
     // Start is called before the first frame update
     void Start()
@@ -81,8 +82,10 @@ public class Ball : MonoBehaviour
         if(position.magnitude > spaceDistance){
             position = position.normalized * spaceDistance;
 
-            HitWall();
             PointSystem.HitSpace();
+
+
+            HitWall();
         }
 
         if (position.x < oobX)
