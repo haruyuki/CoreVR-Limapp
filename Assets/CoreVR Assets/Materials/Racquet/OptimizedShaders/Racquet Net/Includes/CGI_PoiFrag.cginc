@@ -151,7 +151,7 @@ float4 frag(v2f i, uint facing: SV_IsFrontFace): SV_Target
 	Handle a few alpha options
 	**********************************************************************/
 	
-	if (float(2) == 1)
+	if (float(3) == 1)
 	{
 		
 		if (float(0) == 0)
@@ -161,17 +161,17 @@ float4 frag(v2f i, uint facing: SV_IsFrontFace): SV_Target
 	}
 	albedo.a = max(float(0), albedo.a);
 	
-	if (float(2) == 0)
+	if (float(3) == 0)
 	{
 		albedo.a = 1;
 	}
 	
-	if (float(2) >= 1)
+	if (float(3) >= 1)
 	{
 		clip(albedo.a - float(0));
 	}
 	
-	if (float(0))
+	if (float(1))
 	{
 		albedo.rgb *= saturate(albedo.a + 0.0000000001);
 	}
@@ -201,7 +201,7 @@ float4 frag(v2f i, uint facing: SV_IsFrontFace): SV_Target
 		ApplyAlphaToCoverage(finalColor);
 	#endif
 	
-	if (float(2) == 1)
+	if (float(3) == 1)
 	{
 		
 		if (float(0) == 1)
@@ -309,13 +309,13 @@ float4 frag(v2f i, uint facing: SV_IsFrontFace): SV_Target
 		}
 	#endif
 	#ifdef FORWARD_ADD_PASS
-		if (float(2) > 0)
+		if (float(3) > 0)
 		{
 			finalColor.rgb *= finalColor.a;
 		}
 	#endif
 	
-	if (float(2) == 0)
+	if (float(3) == 0)
 	{
 		finalColor.a = 1;
 	}

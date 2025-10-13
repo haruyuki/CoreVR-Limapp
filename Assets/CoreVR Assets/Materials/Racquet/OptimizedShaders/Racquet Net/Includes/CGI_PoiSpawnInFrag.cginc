@@ -28,7 +28,7 @@
             float alpha = gradient - _SpawnInAlpha - noise;
             spawnInEmission = saturate(inverseGradient + _SpawnInAlpha + _SpawnInEmissionOffset +noise - 1) * _SpawnInEmissionColor;
             
-            if(float(2) >= 1)
+            if(float(3) >= 1)
             {
                 clip(ceil(alpha) - 0.001);
             }
@@ -43,7 +43,7 @@
             float gradient = calculateGradientValueFrag(_SpawnInGradientStart, _SpawnInGradientFinish, localPos);
             float alpha = gradient - _SpawnInAlpha - noise + length(_SpawnInVertOffset);
             
-            if(float(2) >= 1)
+            if(float(3) >= 1)
             {
                 clip(ceil(alpha) - 0.001);
             }

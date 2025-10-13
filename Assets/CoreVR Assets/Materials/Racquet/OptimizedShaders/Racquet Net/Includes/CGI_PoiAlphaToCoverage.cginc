@@ -12,7 +12,7 @@
     void ApplyAlphaToCoverage(inout float4 finalColor)
     {
         
-        if (float(2) == 1)
+        if (float(3) == 1)
         {
             
             if(float(0))

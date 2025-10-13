@@ -48,7 +48,7 @@ float4 frag(v2f i, uint facing: SV_IsFrontFace): COLOR
 	poiCam.screenUV = calcScreenUVs(i.grabPos);
 	col.a *= float4(1,1,1,1).a;
 	
-	if (float(2) == 1)
+	if (float(3) == 1)
 	{
 		applyDithering(col);
 	}

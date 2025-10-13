@@ -37,17 +37,6 @@ float _EmissionScrollingOffset;
 float _EmissionHueShiftSpeed;
 float _EmissionHueShiftSpeed1;
 float4 _EmissionColor1;
-#ifdef EFFECT_HUE_VARIATION
-    #if defined(PROP_EMISSIONMAP1) || !defined(OPTIMIZER_ENABLED)
-        POI_TEXTURE_NOSAMPLER(_EmissionMap1);
-    #endif
-    #if defined(PROP_EMISSIONMASK1) || !defined(OPTIMIZER_ENABLED)
-        POI_TEXTURE_NOSAMPLER(_EmissionMask1);
-    #endif
-    #if defined(PROP_EMISSIONSCROLLINGCURVE1) || !defined(OPTIMIZER_ENABLED)
-        UNITY_DECLARE_TEX2D_NOSAMPLER(_EmissionScrollingCurve1); float4 _EmissionScrollingCurve1_ST;
-    #endif
-#endif
 float _EmissionBaseColorAsMap1;
 float _EmissionStrength1;
 float _EnableEmission1;
@@ -158,17 +147,17 @@ float3 calculateEmissionNew(in float3 baseColor, inout float4 finalColor)
         
         if (!float(0))
         {
-            emissionColor0 = POI2D_SAMPLER_PAN(_EmissionMap, _MainTex, poiMesh.uv[float(0)], float4(0,0,0,0)).rgb * lerp(1, baseColor, float(0)).rgb * float4(0.5660378,0.5660378,0.5660378,1).rgb;
+            emissionColor0 = POI2D_SAMPLER_PAN(_EmissionMap, _MainTex, poiMesh.uv[float(0)], float4(0,0,0,0)).rgb * lerp(1, baseColor, float(0)).rgb * float4(0.6792453,0.0480598,0.05981941,1).rgb;
         }
         else
         {
-            emissionColor0 = UNITY_SAMPLE_TEX2D_SAMPLER(_EmissionMap, _MainTex, ((.5 + poiLight.nDotV * .5) * float4(1,1,0,0).xy) + _Time.x * float(5)).rgb * lerp(1, baseColor, float(0)).rgb * float4(0.5660378,0.5660378,0.5660378,1).rgb;
+            emissionColor0 = UNITY_SAMPLE_TEX2D_SAMPLER(_EmissionMap, _MainTex, ((.5 + poiLight.nDotV * .5) * float4(1,1,0,0).xy) + _Time.x * float(5)).rgb * lerp(1, baseColor, float(0)).rgb * float4(0.6792453,0.0480598,0.05981941,1).rgb;
         }
     #else
-        emissionColor0 = lerp(1, baseColor, float(0)).rgb * float4(0.5660378,0.5660378,0.5660378,1).rgb;
+        emissionColor0 = lerp(1, baseColor, float(0)).rgb * float4(0.6792453,0.0480598,0.05981941,1).rgb;
     #endif
     
-    if (float(1))
+    if (float(0))
     {
         float3 pos = poiMesh.localPos;
         
@@ -217,88 +206,6 @@ float3 calculateEmissionNew(in float3 baseColor, inout float4 finalColor)
     float3 emission1 = 0;
     float emissionStrength1 = 0;
     float3 emissionColor1 = 0;
-    #ifdef EFFECT_HUE_VARIATION
-        emissionStrength1 = float(0.7);
-        #ifdef POI_AUDIOLINK
-            
-            if (poiMods.audioLinkTextureExists)
-            {
-                
-                if (float(0))
-                {
-                    emissionStrength1 *= poiMods.audioLink[float(0)];
-                }
-                
-                if (float(0))
-                {
-                    emissionStrength1 *= getBandAtTime(float(0), saturate(1 - poiLight.nDotV), float(1));
-                }
-                emissionStrength1 += lerp(float4(0,0,0,0).x, float4(0,0,0,0).y, getBandAtTime(float(0), saturate(1 - poiLight.nDotV), float(1)));
-                emissionStrength1 += lerp(float4(0,0,0,0).x, float4(0,0,0,0).y, poiMods.audioLink[float(0)]);
-                emissionStrength1 = max(emissionStrength1, 0);
-            }
-        #endif
-        float glowInTheDarkMultiplier1 = calculateGlowInTheDark(float(0), float(1), float(1), float(0), float(0), float(0));
-        #if defined(PROP_EMISSIONMAP1) || !defined(OPTIMIZER_ENABLED)
-            
-            if (!float(0))
-            {
-                emissionColor1 = POI2D_SAMPLER_PAN(_EmissionMap1, _MainTex, poiMesh.uv[float(0)], float4(0,0,0,0)) * lerp(1, baseColor, float(0)).rgb * float4(1,1,1,1).rgb;
-            }
-            else
-            {
-                emissionColor1 = UNITY_SAMPLE_TEX2D_SAMPLER(_EmissionMap1, _MainTex, ((.5 + poiLight.nDotV * .5) * float4(1,1,0,0).xy) + _Time.x * float(5)).rgb * lerp(1, baseColor, float(0)).rgb * float4(1,1,1,1).rgb;
-            }
-        #else
-            emissionColor1 = lerp(1, baseColor, float(0)).rgb * float4(1,1,1,1).rgb;;
-        #endif
-        
-        if (float(0))
-        {
-            float3 pos1 = poiMesh.localPos;
-            
-            if (float(0))
-            {
-                pos1 = poiMesh.vertexColor.rgb;
-            }
-            
-            if (float(0))
-            {
-                #if defined(PROP_EMISSIONSCROLLINGCURVE1) || !defined(OPTIMIZER_ENABLED)
-                    emissionStrength1 *= UNITY_SAMPLE_TEX2D_SAMPLER(_EmissionScrollingCurve1, _MainTex, TRANSFORM_TEX(poiMesh.uv[float(0)], _EmissionScrollingCurve1) + (dot(pos1, float4(0,-10,0,0)) * float(20)) + _Time.x * float(10));
-                #endif
-            }
-            else
-            {
-                emissionStrength1 *= calculateScrollingEmission(float4(0,-10,0,0), float(10), float(20), float(10), float(0), pos1);
-            }
-        }
-        
-        if (float(1))
-        {
-            emissionStrength1 *= calculateBlinkingEmission(float(0), float(0.8), float(1), float(0));
-        }
-        emissionColor1 = hueShift(emissionColor1, frac(float(0) + float(0) * _Time.x) * float(0));
-        #if defined(PROP_EMISSIONMASK1) || !defined(OPTIMIZER_ENABLED)
-            float emissionMask1 = UNITY_SAMPLE_TEX2D_SAMPLER(_EmissionMask1, _MainTex, TRANSFORM_TEX(poiMesh.uv[float(0)], _EmissionMask1) + _Time.x * float4(0,0,0,0));
-        #else
-            float emissionMask1 = 1;
-        #endif
-        #ifdef POI_BLACKLIGHT
-            if (_BlackLightMaskEmission2 != 4)
-            {
-                emissionMask1 *= blackLightMask[_BlackLightMaskEmission2];
-            }
-        #endif
-        emissionStrength1 *= glowInTheDarkMultiplier1 * emissionMask1;
-        emission1 = emissionStrength1 * emissionColor1;
-        #ifdef POI_DISSOLVE
-            if (float(2) != 2)
-            {
-                emission1 *= lerp(1 - dissolveAlpha, dissolveAlpha, float(2));
-            }
-        #endif
-    #endif
     finalColor.rgb = lerp(finalColor.rgb, saturate(emissionColor0 + emissionColor1), saturate(emissionStrength0 + emissionStrength1) * float(0) * poiMax(emission0 + emission1));
     return emission0 + emission1;
 }
