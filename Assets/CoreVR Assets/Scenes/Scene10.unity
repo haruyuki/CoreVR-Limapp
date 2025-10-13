@@ -540,6 +540,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0c1768758a15c7f44a148492f8270c27, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  spaceParticles: {fileID: 0}
   combo: 0
   score: 0
   scoreText: {fileID: 936112879}
@@ -547,7 +548,8 @@ MonoBehaviour:
   scoreAnimator: {fileID: 315223314}
   scoreBar: {fileID: 0}
   maxScore: 10
-  walls: []
+  wall: {fileID: 0}
+  ball: {fileID: 0}
 --- !u!114 &315223316
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5866,10 +5868,6 @@ MonoBehaviour:
   wallSpeedFactor: 0
   shrinkPerHit: 0.1
   minScaleFactor: 0.2
-  upperLimit: 0
-  lowerLimit: 0
-  rightLimit: 0
-  leftLimit: 0
 --- !u!1 &874014021
 GameObject:
   m_ObjectHideFlags: 0
@@ -5899,6 +5897,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0c1768758a15c7f44a148492f8270c27, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  spaceParticles: {fileID: 0}
   combo: 0
   score: 0
   scoreText: {fileID: 936112879}
@@ -5906,9 +5905,8 @@ MonoBehaviour:
   scoreAnimator: {fileID: 0}
   scoreBar: {fileID: 1010932565}
   maxScore: 20
-  walls:
-  - {fileID: 869791050}
-  - {fileID: 874535078}
+  wall: {fileID: 0}
+  ball: {fileID: 0}
 --- !u!4 &874014023
 Transform:
   m_ObjectHideFlags: 0
@@ -5957,10 +5955,6 @@ MonoBehaviour:
   wallSpeedFactor: 0
   shrinkPerHit: 0.1
   minScaleFactor: 0.2
-  upperLimit: 0
-  lowerLimit: 0
-  rightLimit: 0
-  leftLimit: 0
 --- !u!1 &899729190
 GameObject:
   m_ObjectHideFlags: 0
@@ -6471,6 +6465,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9be2659ab1e62a54b80075a85f5a658b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  spaceDistance: 25
   position: {x: 0, y: 10, z: 0}
   velocity: {x: -7.5, y: 4, z: -2}
   startVelocity: {x: -6.4, y: 2, z: -2}
@@ -6494,7 +6489,7 @@ MonoBehaviour:
   startPos: {fileID: 1407164097}
   extraSpeedPerCombo: 0
   ball: {fileID: 0}
-  currentColor: 0
+  spaceBall: 0
   maxBounces: 4
   hasHitTarget: 0
 --- !u!135 &938983744
@@ -6760,7 +6755,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 90.00001, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 12.7, y: 6.25}
+  m_AnchoredPosition: {x: 12.7, y: 6.37}
   m_SizeDelta: {x: 19.2, y: 6.7}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &1010932563
@@ -6820,7 +6815,7 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
-  m_Sprite: {fileID: 21300000, guid: 0669cccab7def324193a567fec38a72a, type: 3}
+  m_Sprite: {fileID: 21300000, guid: ef082cca23882d44f9cc7758de431581, type: 3}
   m_Type: 3
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -12437,7 +12432,7 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
-  m_Sprite: {fileID: 21300000, guid: b88aac86fef9c6a43adb4241d1ab0297, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 27476d58f3992644ba41d9db5245280a, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
