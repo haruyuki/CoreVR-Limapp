@@ -52,7 +52,6 @@ public class PointSystem : MonoBehaviour
         UpdateScoreUI();
         SetScoreTextVisible(false); 
 
-        UpdateScoreUI();
 
     }
 
@@ -81,7 +80,7 @@ public class PointSystem : MonoBehaviour
     }
 
     public void hitWall(int id){
-        Debug.Log($"Ball hit wall {id}");
+        Debug.Log($"Ball hit wall {id}, spaceBall is {ball.spaceBall}");
         if(!ball.spaceBall){
             AddPoint();
         }else{
@@ -90,6 +89,8 @@ public class PointSystem : MonoBehaviour
     }
 
     public void hitSpace(){
+        Debug.Log($"Ball hit space , spaceBall is {ball.spaceBall}");
+
         if(ball.spaceBall){
             AddPoint();
         }else{

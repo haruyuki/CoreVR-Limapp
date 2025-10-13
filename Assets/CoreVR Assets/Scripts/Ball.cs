@@ -79,6 +79,8 @@ public class Ball : MonoBehaviour
         }
         */
         if(position.magnitude > spaceDistance){
+            position = position.normalized * spaceDistance;
+
             HitWall();
             PointSystem.HitSpace();
         }

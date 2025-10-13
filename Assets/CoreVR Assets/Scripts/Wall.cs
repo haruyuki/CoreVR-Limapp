@@ -119,8 +119,9 @@ public class Wall : MonoBehaviour
 
             }*/
             BreakTarget(ballScript);
-            ballScript.HitWall();
             PointSystem.HitWall(id);
+            ballScript.HitWall();
+
         }
     }
     
