@@ -8,14 +8,14 @@ Material:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_Name: Racquet Net
-  m_Shader: {fileID: 4800000, guid: 917b37092bae034459c28c00a3a19b54, type: 3}
-  m_ShaderKeywords: _EMISSION _SMOOTHNESS_TEXTURE_ALBEDO_CHANNEL_A
+  m_Shader: {fileID: 4800000, guid: f772aec6bbe740e4e87bb43ffefa2575, type: 3}
+  m_ShaderKeywords: 
   m_LightmapFlags: 1
   m_EnableInstancingVariants: 0
   m_DoubleSidedGI: 0
   m_CustomRenderQueue: 3000
   stringTagMap:
-    OptimizedShaderFolder: WallGreen
+    OptimizedShaderFolder: Racquet Net
     OriginalShader: ".poiyomi/\u2022 Poiyomi Toon \u2022"
     RenderType: Transparent
   disabledShaderPasses: []
@@ -630,7 +630,7 @@ Material:
     - _AlphaMaskScale: 1
     - _AlphaMaskValue: 0
     - _AlphaMod: 0
-    - _AlphaPremultiply: 0
+    - _AlphaPremultiply: 1
     - _AlphaToMask: 0
     - _AngleCompareTo: 0
     - _AngleMinAlpha: 0
@@ -1275,7 +1275,7 @@ Material:
     - _MetallicTintMapUV: 0
     - _Mirror: 0
     - _MirrorTextureUV: 0
-    - _Mode: 2
+    - _Mode: 3
     - _ModelAngleMax: 90
     - _ModelAngleMin: 45
     - _MonochromeLighting: 0
@@ -1446,7 +1446,7 @@ Material:
     - _ScrollingEmission: 0
     - _ScrollingEmission1: 0
     - _ShadeColor_Step: 0
-    - _ShaderOptimizerEnabled: 0
+    - _ShaderOptimizerEnabled: 1
     - _Shadow2ndBlur: 0.1
     - _Shadow2ndBorder: 0.15
     - _Shadow2ndNormalStrength: 1
@@ -1526,7 +1526,7 @@ Material:
     - _SpecularToonStart1: 0.95
     - _SpecularType: 1
     - _SpecularType1: 1
-    - _SrcBlend: 5
+    - _SrcBlend: 1
     - _SrcBlendAlpha: 1
     - _SrcBlendAlphaFA: 0
     - _SrcBlendFA: 1
@@ -1924,7 +1924,7 @@ Material:
     - _BumpMapPan: {r: 0, g: 0, b: 0, a: 0}
     - _ClearcoatMapPan: {r: 0, g: 0, b: 0, a: 0}
     - _ClippingMaskPan: {r: 0, g: 0, b: 0, a: 0}
-    - _Color: {r: 1, g: 0, b: 0.8940463, a: 0.6039216}
+    - _Color: {r: 1, g: 0, b: 0.10518694, a: 0.6039216}
     - _Color2nd: {r: 1, g: 1, b: 1, a: 1}
     - _Color3rd: {r: 1, g: 1, b: 1, a: 1}
     - _DecalColor: {r: 1, g: 1, b: 1, a: 1}
@@ -1976,7 +1976,7 @@ Material:
     - _EmissionBlink: {r: 0.2, g: 0, b: 3.1415932, a: 0}
     - _EmissionCenterOutAddAudioLink: {r: 0, g: 0, b: 0, a: 0}
     - _EmissionCenterOutAddAudioLink1: {r: 0, g: 0, b: 0, a: 0}
-    - _EmissionColor: {r: 0.9256239, g: 0, b: 1, a: 1}
+    - _EmissionColor: {r: 0.6792453, g: 0.048059803, b: 0.059819408, a: 1}
     - _EmissionColor1: {r: 0.004883388, g: 0.6226415, b: 0, a: 1}
     - _EmissionMap1Pan: {r: 0, g: 0, b: 0, a: 0}
     - _EmissionMapPan: {r: 0, g: 0, b: 0, a: 0}
