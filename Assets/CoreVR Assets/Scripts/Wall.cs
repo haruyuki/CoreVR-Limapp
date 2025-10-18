@@ -122,7 +122,14 @@ public class Wall : MonoBehaviour
     public void AddPoint(){
         _combo++;
 
-       wallPos += wallOffset;
+        Debug.Log("Combo:" + _combo + "Combo % 5:" + (_combo%5));
+
+
+        if ((_combo % 5)==0) {
+            wallPos += wallOffset;
+        }
+
+       
 
     }
     

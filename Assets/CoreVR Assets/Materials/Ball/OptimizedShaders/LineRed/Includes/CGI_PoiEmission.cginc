@@ -147,14 +147,14 @@ float3 calculateEmissionNew(in float3 baseColor, inout float4 finalColor)
         
         if (!float(0))
         {
-            emissionColor0 = POI2D_SAMPLER_PAN(_EmissionMap, _MainTex, poiMesh.uv[float(0)], float4(0,0,0,0)).rgb * lerp(1, baseColor, float(0)).rgb * float4(1,1,1,1).rgb;
+            emissionColor0 = POI2D_SAMPLER_PAN(_EmissionMap, _MainTex, poiMesh.uv[float(0)], float4(0,0,0,0)).rgb * lerp(1, baseColor, float(0)).rgb * float4(0.2470588,0.05882353,0.0659738,1).rgb;
         }
         else
         {
-            emissionColor0 = UNITY_SAMPLE_TEX2D_SAMPLER(_EmissionMap, _MainTex, ((.5 + poiLight.nDotV * .5) * float4(1,1,0,0).xy) + _Time.x * float(5)).rgb * lerp(1, baseColor, float(0)).rgb * float4(1,1,1,1).rgb;
+            emissionColor0 = UNITY_SAMPLE_TEX2D_SAMPLER(_EmissionMap, _MainTex, ((.5 + poiLight.nDotV * .5) * float4(1,1,0,0).xy) + _Time.x * float(5)).rgb * lerp(1, baseColor, float(0)).rgb * float4(0.2470588,0.05882353,0.0659738,1).rgb;
         }
     #else
-        emissionColor0 = lerp(1, baseColor, float(0)).rgb * float4(1,1,1,1).rgb;
+        emissionColor0 = lerp(1, baseColor, float(0)).rgb * float4(0.2470588,0.05882353,0.0659738,1).rgb;
     #endif
     
     if (float(0))
@@ -166,15 +166,15 @@ float3 calculateEmissionNew(in float3 baseColor, inout float4 finalColor)
             pos = poiMesh.vertexColor.rgb;
         }
         
-        if (float(1))
+        if (float(0))
         {
             #if defined(PROP_EMISSIONSCROLLINGCURVE) || !defined(OPTIMIZER_ENABLED)
-                emissionStrength0 *= UNITY_SAMPLE_TEX2D_SAMPLER(_EmissionScrollingCurve, _MainTex, TRANSFORM_TEX(poiMesh.uv[float(0)], _EmissionScrollingCurve) + (dot(pos, float4(0,-10,0,0).xyz) * float(10)) + _Time.x * float(10)).r;
+                emissionStrength0 *= UNITY_SAMPLE_TEX2D_SAMPLER(_EmissionScrollingCurve, _MainTex, TRANSFORM_TEX(poiMesh.uv[float(0)], _EmissionScrollingCurve) + (dot(pos, float4(0,-10,0,0).xyz) * float(20)) + _Time.x * float(10)).r;
             #endif
         }
         else
         {
-            emissionStrength0 *= calculateScrollingEmission(float4(0,-10,0,0).xyz, float(10), float(10), float(10), float(0), pos);
+            emissionStrength0 *= calculateScrollingEmission(float4(0,-10,0,0).xyz, float(10), float(20), float(10), float(0), pos);
         }
     }
     
@@ -182,7 +182,7 @@ float3 calculateEmissionNew(in float3 baseColor, inout float4 finalColor)
     {
         emissionStrength0 *= calculateBlinkingEmission(float(0), float(1), float(4), float(0));
     }
-    emissionColor0 = hueShift(emissionColor0, frac(float(0) + float(0) * _Time.x) * float(0));
+    emissionColor0 = hueShift(emissionColor0, frac(float(1) + float(0) * _Time.x) * float(0));
     #if defined(PROP_EMISSIONMASK) || !defined(OPTIMIZER_ENABLED)
         float emissionMask0 = UNITY_SAMPLE_TEX2D_SAMPLER(_EmissionMask, _MainTex, TRANSFORM_TEX(poiMesh.uv[float(0)], _EmissionMask) + _Time.x * float4(0,0,0,0)).r;
     #else

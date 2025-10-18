@@ -98,11 +98,11 @@ public class PointSystem : MonoBehaviour
 
         if(ball.spaceBall){
             AddPoint();
+            wall.AddPoint();
             Instantiate(spaceParticles, ball.position, Quaternion.identity);
         }else{
             ResetScore();
             wall.ResetScore();
-
         }
 
     }

@@ -113,7 +113,7 @@ public class Ball : MonoBehaviour
             blueBall.SetActive(true);
             greenBall.SetActive(false);
             spaceBall = true;
-            trailRenderer.startColor = new Color(0,0,1);
+            trailRenderer.startColor = new Color(1,0,0);
         } else {
             greenBall.SetActive(true);
             blueBall.SetActive(false);

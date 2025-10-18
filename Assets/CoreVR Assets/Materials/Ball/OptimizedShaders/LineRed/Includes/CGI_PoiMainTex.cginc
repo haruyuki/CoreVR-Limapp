@@ -18,6 +18,16 @@ half _MainMinAlpha;
 half _MainMaxAlpha;
 float _MainHueShift;
 float _MainFadeType;
+#ifdef COLOR_GRADING_HDR
+    #if defined(PROP_MAINCOLORADJUSTTEXTURE) || !defined(OPTIMIZER_ENABLED)
+        POI_TEXTURE_NOSAMPLER(_MainColorAdjustTexture);
+    #endif
+    float _MainHueShiftToggle;
+    float _MainHueShiftSpeed;
+    float _MainHueShiftReplace;
+    float _MainSaturationShift;
+    float _MainBrightness;
+#endif
 float alphaMask;
 half3 diffColor;
 #include "CGI_PoiBackFace.cginc"
@@ -72,7 +82,7 @@ void initTextureData(inout float4 albedo, inout float4 mainTexture, inout float3
         {
             vertexColor = GammaToLinearSpace(poiMesh.vertexColor.rgb);
         }
-        albedo = float4(mainTexture.rgb * max(float4(1,1,1,0.6039216).rgb, float3(0.000000001, 0.000000001, 0.000000001)) * lerp(1, vertexColor, float(0)), mainTexture.a * max(float4(1,1,1,0.6039216).a, 0.0000001));
+        albedo = float4(mainTexture.rgb * max(float4(1,0.0007431377,0,1).rgb, float3(0.000000001, 0.000000001, 0.000000001)) * lerp(1, vertexColor, float(0)), mainTexture.a * max(float4(1,0.0007431377,0,1).a, 0.0000001));
         #if defined(POI_LIGHTING) && defined(FORWARD_BASE_PASS)
             applyShadeMaps(albedo);
         #endif
@@ -90,6 +100,23 @@ void initTextureData(inout float4 albedo, inout float4 mainTexture, inout float3
         applyBackFaceTexture(backFaceDetailIntensity, mixedHueShift, albedo, backFaceEmission);
         #ifdef POI_FUR
             calculateFur();
+        #endif
+        #ifdef COLOR_GRADING_HDR
+            #if defined(PROP_MAINCOLORADJUSTTEXTURE) || !defined(OPTIMIZER_ENABLED)
+                float4 hueShiftAlpha = POI2D_SAMPLER_PAN(_MainColorAdjustTexture, _MainTex, poiMesh.uv[float(0)], float4(0,0,0,0));
+            #else
+                float4 hueShiftAlpha = 1;
+            #endif
+            if (float(0))
+            {
+                albedo.rgb = lerp(albedo.rgb, hueShift(albedo.rgb, mixedHueShift + float(0) * _Time.x), hueShiftAlpha.r);
+            }
+            else
+            {
+                albedo.rgb = hueShift(albedo.rgb, frac((mixedHueShift - (1 - hueShiftAlpha.r) + float(0) * _Time.x)));
+            }
+            albedo.rgb = lerp(albedo.rgb, dot(albedo.rgb, float3(0.3, 0.59, 0.11)), -float(0) * hueShiftAlpha.b);
+            albedo.rgb = saturate(albedo.rgb + float(0) * hueShiftAlpha.g);
         #endif
         albedo.rgb = saturate(albedo.rgb);
         #ifdef POI_HOLOGRAM
