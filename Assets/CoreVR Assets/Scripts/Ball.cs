@@ -108,18 +108,23 @@ public class Ball : MonoBehaviour
     }
 
     private void ChooseBall() {
-        int choice = Random.Range(0,2);
-        if (choice == 0) {
+
+        float chance = 0.1f;
+
+        //int choice = Random.Range(0f,2);
+
+        if (Random.value < chance) {
             blueBall.SetActive(true);
             greenBall.SetActive(false);
             spaceBall = true;
             trailRenderer.startColor = new Color(1,0,0);
+            chance = 0;
         } else {
             greenBall.SetActive(true);
             blueBall.SetActive(false);
             spaceBall = false;
-
             trailRenderer.startColor = new Color(0,1,0);
+            chance += 0.1f;
         }
     }
 
