@@ -643,7 +643,7 @@ Material:
     - _Emission1CenterOutAudioLinkWidth: 1
     - _EmissionBaseColorAsMap: 0
     - _EmissionBaseColorAsMap1: 0
-    - _EmissionBlinkingEnabled: 0
+    - _EmissionBlinkingEnabled: 1
     - _EmissionBlinkingEnabled1: 0
     - _EmissionBlinkingOffset: 0
     - _EmissionBlinkingOffset1: 0
@@ -663,20 +663,20 @@ Material:
     - _EmissionMapUV: 0
     - _EmissionMask1UV: 0
     - _EmissionMaskUV: 0
-    - _EmissionReplace: 0
+    - _EmissionReplace: 1
     - _EmissionScrollingOffset: 0
     - _EmissionScrollingOffset1: 0
     - _EmissionScrollingUseCurve: 0
     - _EmissionScrollingUseCurve1: 0
     - _EmissionScrollingVertexColor: 0
     - _EmissionScrollingVertexColor1: 0
-    - _EmissionStrength: 2
+    - _EmissionStrength: 1
     - _EmissionStrength1: 0
     - _EmissiveBlink_Max: 1
     - _EmissiveBlink_Max1: 1
     - _EmissiveBlink_Min: 0
     - _EmissiveBlink_Min1: 0
-    - _EmissiveBlink_Velocity: 4
+    - _EmissiveBlink_Velocity: 25
     - _EmissiveBlink_Velocity1: 4
     - _EmissiveScroll_Interval: 20
     - _EmissiveScroll_Interval1: 20
@@ -1074,7 +1074,7 @@ Material:
     - m_ParallaxMap: 0
     - m_Patreon: 0
     - m_PostProcessing: 0
-    - m_Special_Effects: 0
+    - m_Special_Effects: 1
     - m_end_Alpha: 0
     - m_end_BlackLight: 0
     - m_end_Blur: 0
@@ -1245,7 +1245,7 @@ Material:
     - m_start_backFace: 0
     - m_start_bakedLighting: 0
     - m_start_blending: 0
-    - m_start_blinkingEmissionOptions: 0
+    - m_start_blinkingEmissionOptions: 1
     - m_start_blinkingEmissionOptions1: 0
     - m_start_brdf: 0
     - m_start_clearCoat: 0
@@ -1351,7 +1351,7 @@ Material:
     - _BumpMapPan: {r: 0, g: 0, b: 0, a: 0}
     - _ClearcoatMapPan: {r: 0, g: 0, b: 0, a: 0}
     - _ClippingMaskPan: {r: 0, g: 0, b: 0, a: 0}
-    - _Color: {r: 1, g: 0.009601339, b: 0, a: 1}
+    - _Color: {r: 0.41509432, g: 0.0054617673, b: 0, a: 1}
     - _DecalColor: {r: 1, g: 1, b: 1, a: 1}
     - _DecalColor1: {r: 1, g: 1, b: 1, a: 1}
     - _DecalColor2: {r: 1, g: 1, b: 1, a: 1}
@@ -1388,7 +1388,7 @@ Material:
     - _DistortionStrengthAudioLink: {r: 0, g: 0, b: 0, a: 0}
     - _EmissionCenterOutAddAudioLink: {r: 0, g: 0, b: 0, a: 0}
     - _EmissionCenterOutAddAudioLink1: {r: 0, g: 0, b: 0, a: 0}
-    - _EmissionColor: {r: 0.24705882, g: 0.058823526, b: 0.065973796, a: 1}
+    - _EmissionColor: {r: 1, g: 0, b: 0.041666508, a: 1}
     - _EmissionColor1: {r: 1, g: 1, b: 1, a: 1}
     - _EmissionMap1Pan: {r: 0, g: 0, b: 0, a: 0}
     - _EmissionMapPan: {r: 0, g: 0, b: 0, a: 0}

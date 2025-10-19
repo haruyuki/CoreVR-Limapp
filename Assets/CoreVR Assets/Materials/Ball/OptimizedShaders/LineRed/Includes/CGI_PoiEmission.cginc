@@ -121,7 +121,7 @@ float calculateBlinkingEmission(in float blinkMin, in float blinkMax, in float b
 float3 calculateEmissionNew(in float3 baseColor, inout float4 finalColor)
 {
     float3 emission0 = 0;
-    float emissionStrength0 = float(2);
+    float emissionStrength0 = float(1);
     float3 emissionColor0 = 0;
     #ifdef POI_AUDIOLINK
         
@@ -147,14 +147,14 @@ float3 calculateEmissionNew(in float3 baseColor, inout float4 finalColor)
         
         if (!float(0))
         {
-            emissionColor0 = POI2D_SAMPLER_PAN(_EmissionMap, _MainTex, poiMesh.uv[float(0)], float4(0,0,0,0)).rgb * lerp(1, baseColor, float(0)).rgb * float4(0.2470588,0.05882353,0.0659738,1).rgb;
+            emissionColor0 = POI2D_SAMPLER_PAN(_EmissionMap, _MainTex, poiMesh.uv[float(0)], float4(0,0,0,0)).rgb * lerp(1, baseColor, float(0)).rgb * float4(1,0,0.04166651,1).rgb;
         }
         else
         {
-            emissionColor0 = UNITY_SAMPLE_TEX2D_SAMPLER(_EmissionMap, _MainTex, ((.5 + poiLight.nDotV * .5) * float4(1,1,0,0).xy) + _Time.x * float(5)).rgb * lerp(1, baseColor, float(0)).rgb * float4(0.2470588,0.05882353,0.0659738,1).rgb;
+            emissionColor0 = UNITY_SAMPLE_TEX2D_SAMPLER(_EmissionMap, _MainTex, ((.5 + poiLight.nDotV * .5) * float4(1,1,0,0).xy) + _Time.x * float(5)).rgb * lerp(1, baseColor, float(0)).rgb * float4(1,0,0.04166651,1).rgb;
         }
     #else
-        emissionColor0 = lerp(1, baseColor, float(0)).rgb * float4(0.2470588,0.05882353,0.0659738,1).rgb;
+        emissionColor0 = lerp(1, baseColor, float(0)).rgb * float4(1,0,0.04166651,1).rgb;
     #endif
     
     if (float(0))
@@ -178,9 +178,9 @@ float3 calculateEmissionNew(in float3 baseColor, inout float4 finalColor)
         }
     }
     
-    if (float(0))
+    if (float(1))
     {
-        emissionStrength0 *= calculateBlinkingEmission(float(0), float(1), float(4), float(0));
+        emissionStrength0 *= calculateBlinkingEmission(float(0), float(1), float(25), float(0));
     }
     emissionColor0 = hueShift(emissionColor0, frac(float(1) + float(0) * _Time.x) * float(0));
     #if defined(PROP_EMISSIONMASK) || !defined(OPTIMIZER_ENABLED)
@@ -206,7 +206,7 @@ float3 calculateEmissionNew(in float3 baseColor, inout float4 finalColor)
     float3 emission1 = 0;
     float emissionStrength1 = 0;
     float3 emissionColor1 = 0;
-    finalColor.rgb = lerp(finalColor.rgb, saturate(emissionColor0 + emissionColor1), saturate(emissionStrength0 + emissionStrength1) * float(0) * poiMax(emission0 + emission1));
+    finalColor.rgb = lerp(finalColor.rgb, saturate(emissionColor0 + emissionColor1), saturate(emissionStrength0 + emissionStrength1) * float(1) * poiMax(emission0 + emission1));
     return emission0 + emission1;
 }
 #endif

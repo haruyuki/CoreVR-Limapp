@@ -36,7 +36,7 @@ half4 fragShadowCaster(
         poiMesh.uv[2] = i.uv2;
         poiMesh.uv[3] = i.uv3;
         float4 mainTexture = UNITY_SAMPLE_TEX2D(_MainTex, TRANSFORM_TEX(poiMesh.uv[float(0)], _MainTex) + _Time.x * float4(0,0,0,0));
-        float clipValue = clamp(float(0.5) + float(0), - .001, 1.001);
+        float clipValue = clamp(float(0) + float(0), - .001, 1.001);
         poiMesh.vertexColor = saturate(i.vertexColor);
         poiMesh.worldPos = i.worldPos;
         poiMesh.localPos = i.localPos;
@@ -64,16 +64,16 @@ half4 fragShadowCaster(
                 alphaMask = 1 - alphaMask;
             }
             alpha.a *= alphaMask;
-            alpha.a *= float4(0.1436938,0.0004227374,0,1).a + .0001;
+            alpha.a *= float4(0.275252,0.3296575,1,0.2588235).a + .0001;
             alpha.a += float(0);
             alpha.a = saturate(alpha.a);
             
-            if (float(0) == 0)
+            if (float(3) == 0)
             {
                 alpha.a = 1;
             }
             
-            if (float(0) == 1)
+            if (float(3) == 1)
             {
                 applyShadowDithering(alpha.a, calcScreenUVs(i.grabPos).xy);
             }
@@ -82,17 +82,17 @@ half4 fragShadowCaster(
                 calculateDissolve(alpha, fakeEmission);
             #endif
             
-            if (float(0) == 1)
+            if (float(3) == 1)
             {
                 clip(alpha.a - 0.001);
             }
             
-            if (float(0) == 1)
+            if (float(3) == 1)
             {
                 clip(alpha.a - clipValue);
             }
             
-            if (float(0) > 1)
+            if (float(3) > 1)
             {
                 float dither = tex3D(_DitherMaskLOD, float3(i.pos.xy * .25, alpha.a * 0.9375)).a;
                 clip(dither - 0.01);
