@@ -351,6 +351,11 @@ PrefabInstance:
       propertyPath: spaceDistance
       value: 20
       objectReference: {fileID: 0}
+    - target: {fileID: 4796727595566529008, guid: f5b933c85e38da34a9fe1dc7751b4bbb,
+        type: 3}
+      propertyPath: maxBounces
+      value: 8
+      objectReference: {fileID: 0}
     - target: {fileID: 4796727595566529014, guid: f5b933c85e38da34a9fe1dc7751b4bbb,
         type: 3}
       propertyPath: m_Enabled
@@ -10724,12 +10729,12 @@ RectTransform:
   m_LocalScale: {x: 0.70381397, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1060150137}
-  m_RootOrder: 3
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 0, y: -2.1450002}
-  m_SizeDelta: {x: 3.54, y: 0.68}
+  m_SizeDelta: {x: 3.54, y: 0.22}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &867440775
 MonoBehaviour:
@@ -10744,14 +10749,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 0, g: 1, b: 0.024693727, a: 1}
   m_RaycastTarget: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
     m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
-  m_Sprite: {fileID: 21300000, guid: f4acf81670f1e7344b4221ce049899e4, type: 3}
+  m_Sprite: {fileID: 21300000, guid: c5821f6de2e364143bc53a8cd15388ef, type: 3}
   m_Type: 3
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -10804,9 +10809,13 @@ MonoBehaviour:
   scoreNum: {fileID: 903147067}
   scoreAnimator: {fileID: 903147065}
   scoreBar: {fileID: 867440775}
+  comboBar: {fileID: 1504806609}
   maxScore: 20
   wall: {fileID: 1941145577}
   ball: {fileID: 1915345019}
+  maxWallDisplacement: 20
+  moveBackCombo: 5
+  comboMoveAmount: 2
 --- !u!4 &874014023
 Transform:
   m_ObjectHideFlags: 0
@@ -11133,6 +11142,7 @@ MonoBehaviour:
   Cube: {fileID: 0}
   fadeAnimator: {fileID: 1356550199}
   startDelay: 0.5
+  startGame: 0
 --- !u!1 &922293304
 GameObject:
   m_ObjectHideFlags: 0
@@ -11784,6 +11794,7 @@ RectTransform:
   - {fileID: 922293307}
   - {fileID: 903147064}
   - {fileID: 1413763830}
+  - {fileID: 1504806608}
   - {fileID: 867440774}
   m_Father: {fileID: 899729193}
   m_RootOrder: 15
@@ -12487,6 +12498,80 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 2e6332b3627d83a47a8a740ae08a2cc9, type: 3}
+--- !u!1 &1504806607
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1504806608}
+  - component: {fileID: 1504806610}
+  - component: {fileID: 1504806609}
+  m_Layer: 5
+  m_Name: ComboBar
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &1504806608
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1504806607}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 0.7038139, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 1060150137}
+  m_RootOrder: 3
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: 0, y: -2.1450002}
+  m_SizeDelta: {x: 3.54, y: 0.22}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &1504806609
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1504806607}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: -765806418, guid: f70555f144d8491a825f0804e09c671c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 1, g: 0.037246067, b: 0, a: 1}
+  m_RaycastTarget: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
+      Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+  m_Sprite: {fileID: 21300000, guid: c5821f6de2e364143bc53a8cd15388ef, type: 3}
+  m_Type: 3
+  m_PreserveAspect: 0
+  m_FillCenter: 1
+  m_FillMethod: 0
+  m_FillAmount: 1
+  m_FillClockwise: 1
+  m_FillOrigin: 0
+  m_UseSpriteMesh: 0
+--- !u!222 &1504806610
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1504806607}
+  m_CullTransparentMesh: 0
 --- !u!4 &1507801057 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 3483493898026059868, guid: 5ebcf21bef1d49a4a930bb1fc8261fad,
@@ -27718,8 +27803,7 @@ MonoBehaviour:
   brokenParticle: {fileID: 405910752}
   pointSystem: {fileID: 874014022}
   wall: {fileID: 1507801057}
-  wallPos: {x: 0, y: 0, z: 0}
-  wallOffset: {x: 2, y: 0, z: 0}
+  offset: {x: 0, y: 0, z: 0}
   wallSpeedFactor: 1
   shrinkPerHit: 0.1
   minScaleFactor: 0.2

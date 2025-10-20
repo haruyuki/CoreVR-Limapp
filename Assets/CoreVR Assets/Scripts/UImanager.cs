@@ -14,12 +14,18 @@ namespace Liminal.Examples
         public Transform Cube;
         public Animator fadeAnimator;
         public float startDelay = 0.5f;
+        public bool startGame = false;
 
         private void Update()
         {
             var avatar = VRAvatar.Active;
             if (avatar == null)
                 return;
+
+            if(startGame){
+                startGame = false;
+                StartGame();
+            }
 
             var rightInput = GetInput(VRInputDeviceHand.Right);
             var leftInput = GetInput(VRInputDeviceHand.Left);
