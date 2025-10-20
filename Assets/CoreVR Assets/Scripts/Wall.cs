@@ -14,18 +14,15 @@ public class Wall : MonoBehaviour
 
 
     public Transform wall;
-    public Vector3 wallPos;
-    public Vector3 wallOffset;
+    public Vector3 offset;
 
     public float wallSpeedFactor;
-    private static Vector3 wallResetPos;
 
 
     [Header("Shrink / Combo Settings")]
     public float shrinkPerHit = 0.1f;
     public float minScaleFactor = 0.2f;
     private Vector3 _initialScale;
-    private int _combo = 0;
     private Vector3 startPos;
 
     public static Wall instance;
@@ -36,16 +33,14 @@ public class Wall : MonoBehaviour
     {
         instance = this;
         _initialScale = transform.localScale; // remember starting size
-        wallResetPos = wall.position;
-        wallPos = wallResetPos;
-        startPos = transform.position;
+        startPos = wall.transform.position;
 
     }
 
     // Update is called once per frame
     void Update()
     {
-        wall.position = Vector3.Lerp(wall.position, wallPos, Time.deltaTime*wallSpeedFactor);
+        wall.position = Vector3.Lerp(wall.position, startPos+offset, Time.deltaTime*wallSpeedFactor);
     }
 
     
@@ -119,27 +114,7 @@ public class Wall : MonoBehaviour
         }
     }
 
-    public void AddPoint(){
-        _combo++;
-
-        Debug.Log("Combo:" + _combo + "Combo % 5:" + (_combo%5));
-
-
-        if ((_combo % 5)==0) {
-            wallPos += wallOffset;
-        }
-
-       
-
-    }
+  
     
-    //Miss/Fail/Restore size at the end of the round
-    public void ResetScore()
-    {
-        _combo = 0;
-        //wall.position = wallResetPos;
-        wallPos = wallResetPos;
-
-        
-    }
+    
 }

@@ -91,6 +91,7 @@ public class Ball : MonoBehaviour
         {
             //PointSystem.instance.ResetScore();
             ResetBall();
+            PointSystem.OutOfBounds();
 
         }
 
@@ -98,6 +99,8 @@ public class Ball : MonoBehaviour
         {
             //PointSystem.instance.ResetScore();
             ResetBall();
+            PointSystem.OutOfBounds();
+
 
         }
 
