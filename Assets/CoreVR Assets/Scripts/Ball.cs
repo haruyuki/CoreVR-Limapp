@@ -44,6 +44,8 @@ public class Ball : MonoBehaviour
     private GameObject blueBall;
     private GameObject greenBall;
 
+    public GameObject backBoundary;
+
     public bool spaceBall = false;
 
 
@@ -92,7 +94,6 @@ public class Ball : MonoBehaviour
             //PointSystem.instance.ResetScore();
             ResetBall();
             PointSystem.OutOfBounds();
-
         }
 
         if (Mathf.Abs(position.z) > oobZ)
@@ -100,8 +101,13 @@ public class Ball : MonoBehaviour
             //PointSystem.instance.ResetScore();
             ResetBall();
             PointSystem.OutOfBounds();
+        }
 
-
+        if (backBoundary)
+        {
+            //PointSystem.instance.ResetScore();
+            ResetBall();
+            PointSystem.OutOfBounds();
         }
 
         velocity = new Vector3(velocity.x, velocity.y-(Time.deltaTime*g), velocity.z);

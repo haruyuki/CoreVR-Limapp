@@ -72,9 +72,6 @@ public class PointSystem : MonoBehaviour
 
         comboMovement = 0;
         wall.offset = new Vector3(comboMovement  + (score/maxScore)*maxWallDisplacement, 0, 0);
-
-
-
     }
 
 
@@ -118,7 +115,8 @@ public class PointSystem : MonoBehaviour
 
         if(ball.spaceBall){
             AddPoint();
-            Instantiate(spaceParticles, ball.position, Quaternion.identity);
+            GameObject sp = Instantiate(spaceParticles, ball.position, Quaternion.identity);
+            sp.SetActive(true);
         }else{
             ResetScore();
         }
