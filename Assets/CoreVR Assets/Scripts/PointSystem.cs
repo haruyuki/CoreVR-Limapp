@@ -17,10 +17,18 @@ public class PointSystem : MonoBehaviour
     public static PointSystem instance;
 
     public Image scoreBar; 
+    public Image comboBar; 
+
     public int maxScore = 20;
 
     public Wall wall;
     public Ball ball;
+
+    public float maxWallDisplacement = 20;
+    public int moveBackCombo = 5;
+    public float comboMoveAmount = 2f;
+
+    private float comboMovement = 0;
 
     void Start()
     {
@@ -43,7 +51,14 @@ public class PointSystem : MonoBehaviour
             //was too energetic
         }
 
+        if ((combo % 5)==0) {
+            comboMovement += comboMoveAmount;
+        }
+
         UpdateScoreUI();
+
+        wall.offset = new Vector3(comboMovement + (score/maxScore)*maxWallDisplacement, 0, 0);
+
     }
 
     public void ResetScore() 
@@ -55,8 +70,14 @@ public class PointSystem : MonoBehaviour
         UpdateScoreUI();
         SetScoreTextVisible(false); 
 
+        comboMovement = 0;
+        wall.offset = new Vector3(comboMovement  + (score/maxScore)*maxWallDisplacement, 0, 0);
+
+
 
     }
+
+
 
     void UpdateScoreUI()
     {
@@ -67,6 +88,7 @@ public class PointSystem : MonoBehaviour
         if(scoreBar != null && maxScore > 0)
         {
             scoreBar.fillAmount = Mathf.Clamp01((float)score / maxScore);
+            comboBar.fillAmount = Mathf.Clamp01((score+Mathf.Floor(combo/5)) / maxScore);
         }
     }
 
@@ -86,10 +108,8 @@ public class PointSystem : MonoBehaviour
         Debug.Log($"Ball hit wall {id}, spaceBall is {ball.spaceBall}");
         if(!ball.spaceBall){
             AddPoint();
-            wall.AddPoint();
         }else{
             ResetScore();
-            wall.ResetScore();
         }
     }
 
@@ -98,11 +118,9 @@ public class PointSystem : MonoBehaviour
 
         if(ball.spaceBall){
             AddPoint();
-            wall.AddPoint();
             Instantiate(spaceParticles, ball.position, Quaternion.identity);
         }else{
             ResetScore();
-            wall.ResetScore();
         }
 
     }
@@ -113,5 +131,9 @@ public class PointSystem : MonoBehaviour
 
     public static void HitSpace(){
         instance.hitSpace();
+    }
+
+    public static void OutOfBounds(){
+        instance.ResetScore();
     }
 }
