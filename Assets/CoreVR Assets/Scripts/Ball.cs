@@ -31,7 +31,7 @@ public class Ball : MonoBehaviour
 
     public TrailRenderer trailRenderer;
 
-    private AudioSource source;
+    public AudioSource source;
 
     public Transform startPos;
 
