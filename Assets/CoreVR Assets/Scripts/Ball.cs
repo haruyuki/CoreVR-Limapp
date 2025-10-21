@@ -8,12 +8,16 @@ public class Ball : MonoBehaviour
 
     public Vector3 position;
     public Vector3 velocity = new Vector3(0,10,0);
+    public float maxYVeloctity = 10;
     public Vector3 startVelocity;
     public static event System.Action OnMissed;
 
     public float g = 9.1f; //gravity
 
     public float floorY = 0;
+
+    public AnimationCurve repeatedBounceBoost;
+    public float distanceBounceScale = 2;
     public GameObject floorHitParticle;
     public float oobX = -10;
     public float oobZ = 0;
@@ -154,6 +158,13 @@ public class Ball : MonoBehaviour
 
     public int maxBounces = 4;
     private float bounces = 0;
+    private float lastBounce = 0;
+    private bool lastHitRacket = false;
+
+    public void HitRacket(){
+        lastHitRacket = true;
+    }
+
     public void HitFloor(){
         velocity = new Vector3(velocity.x, -velocity.y, velocity.z);
         position.y = floorY;
@@ -161,6 +172,14 @@ public class Ball : MonoBehaviour
         GameObject fp = Instantiate(floorHitParticle, transform.position, floorHitParticle.transform.rotation);
         fp.SetActive(true);
         bounces += 1;
+
+        float timeSinceLastBounce = (Time.fixedTime-lastBounce)/(1+(PointSystem.instance.ScorePercent() * distanceBounceScale));
+        float bounceIncrease = repeatedBounceBoost.Evaluate(timeSinceLastBounce);
+        if(!lastHitRacket) {velocity.y += bounceIncrease;}
+        Debug.Log($"Ball Bounce, time since last bounce {timeSinceLastBounce}, ball velocity y increased by {bounceIncrease}");
+        lastBounce = Time.fixedTime;
+        lastHitRacket = false;
+        if(Mathf.Abs(velocity.y) > maxYVeloctity){velocity.y = maxYVeloctity;}
         if(bounces > maxBounces){ ResetBall();}
     }
 

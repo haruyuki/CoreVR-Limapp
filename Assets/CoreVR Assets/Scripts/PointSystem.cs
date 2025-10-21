@@ -29,12 +29,14 @@ public class PointSystem : MonoBehaviour
     public float comboMoveAmount = 2f;
 
     private float comboMovement = 0;
+    private float startSpaceDist;
 
     void Start()
     {
         instance = this;
         UpdateScoreUI();
         SetScoreTextVisible(false); 
+        startSpaceDist = ball.spaceDistance;
     }
 
     public void AddPoint()
@@ -58,7 +60,7 @@ public class PointSystem : MonoBehaviour
         UpdateScoreUI();
 
         wall.offset = new Vector3(comboMovement + (score/maxScore)*maxWallDisplacement, 0, 0);
-
+        ball.spaceDistance = startSpaceDist + wall.offset.magnitude;
     }
 
     public void ResetScore() 
@@ -85,7 +87,7 @@ public class PointSystem : MonoBehaviour
         if(scoreBar != null && maxScore > 0)
         {
             scoreBar.fillAmount = Mathf.Clamp01((float)score / maxScore);
-            comboBar.fillAmount = Mathf.Clamp01((score+Mathf.Floor(combo/5)) / maxScore);
+            comboBar.fillAmount = Mathf.Clamp01((score+Mathf.Floor(combo/moveBackCombo)) / maxScore);
         }
     }
 
@@ -121,6 +123,10 @@ public class PointSystem : MonoBehaviour
             ResetScore();
         }
 
+    }
+
+    public float ScorePercent(){
+        return score/maxScore + Mathf.Floor(combo/moveBackCombo);
     }
 
     public static void HitWall(int id){
