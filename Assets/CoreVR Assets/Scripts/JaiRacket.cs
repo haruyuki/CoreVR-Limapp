@@ -44,8 +44,7 @@ public class JaiRacket : MonoBehaviour
 
         currentAimAssist = 0;
         if(!ball.spaceBall){
-                    currentAimAssist = aimAssist;
-
+            currentAimAssist = aimAssist;
         }
 
         ball.HitRacket();
