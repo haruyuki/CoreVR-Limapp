@@ -45,7 +45,7 @@ public class Ball : MonoBehaviour
     private int _currentCombo = 0;
 
     public GameObject ball;
-    private GameObject blueBall;
+    private GameObject bombBall;
     private GameObject greenBall;
 
     public GameObject backBoundary;
@@ -63,7 +63,7 @@ public class Ball : MonoBehaviour
         position = transform.position;
         startVelocity = velocity;
 
-        blueBall = ball.transform.GetChild(0).gameObject;
+        bombBall = ball.transform.GetChild(0).gameObject;
         greenBall = ball.transform.GetChild(1).gameObject;
         ChooseBall();
     }
@@ -127,14 +127,14 @@ public class Ball : MonoBehaviour
         //int choice = Random.Range(0f,2);
 
         if (Random.value < chance) {
-            blueBall.SetActive(true);
+            bombBall.SetActive(true);
             greenBall.SetActive(false);
             spaceBall = true;
             trailRenderer.startColor = new Color(1,0,0);
             chance = 0;
         } else {
             greenBall.SetActive(true);
-            blueBall.SetActive(false);
+            bombBall.SetActive(false);
             spaceBall = false;
             trailRenderer.startColor = new Color(0,1,0);
             chance += 0.1f;

@@ -47,6 +47,12 @@ public class JaiRacket : MonoBehaviour
             currentAimAssist = aimAssist;
         }
 
+        Rigidbody rb = ball.GetComponent<Rigidbody>();
+
+        if (ball.spaceBall){
+            rb.useGravity = false;
+        }
+
         ball.HitRacket();
 
         Vector3 towardsTarget = (PointSystem.instance.wall.transform.position + new Vector3(0, 3, 0) - ball.position).normalized;
@@ -56,5 +62,6 @@ public class JaiRacket : MonoBehaviour
         Vector3 velocityVector = velocityDot*racketVelocity.magnitude*velocityMultiplier * Vector3.Scale(Vector3.Lerp(hitDir, towardsTarget, currentAimAssist).normalized, new Vector3(1,0,1));
 
         ball.velocity = (ball.GetSpeedVector().magnitude * Vector3.Lerp(hitDir, towardsTarget, aimAssist).normalized) + velocityVector;
+        rb.useGravity = true;
     }
 }

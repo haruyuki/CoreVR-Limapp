@@ -98,7 +98,7 @@ namespace Liminal.Examples
         private IEnumerator PauseRoutine()
         {
             Time.timeScale = 0f;
-            fadeAnimator.SetBool("Pause", true);
+            //fadeAnimator.SetBool("Pause", true);
             fadeAnimator.SetBool("Play", false);
             yield break;
         }
@@ -108,7 +108,7 @@ namespace Liminal.Examples
             
             yield return new WaitForSecondsRealtime(startDelay);
             fadeAnimator.SetBool("Play", true);
-            fadeAnimator.SetBool("Pause", false);
+            //fadeAnimator.SetBool("Pause", false);
             Time.timeScale = 1f;
         }
 
