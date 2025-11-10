@@ -8,6 +8,7 @@ public class Ball : MonoBehaviour
 
     public Vector3 position;
     public Vector3 velocity = new Vector3(0,10,0);
+    public float distanceVelocityIncrease;
     public float maxYVeloctity = 10;
     public Vector3 startVelocity;
     public static event System.Action OnMissed;
@@ -122,7 +123,7 @@ public class Ball : MonoBehaviour
 
     private void ChooseBall() {
 
-        float chance = 0.1f;
+        float chance = 0.2f;
 
         //int choice = Random.Range(0f,2);
 

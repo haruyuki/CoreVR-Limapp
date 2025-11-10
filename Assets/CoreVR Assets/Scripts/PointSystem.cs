@@ -27,6 +27,7 @@ public class PointSystem : MonoBehaviour
     public float maxWallDisplacement = 20;
     public int moveBackCombo = 5;
     public float comboMoveAmount = 2f;
+    public float wallMoveBackAmount = 5f;
 
     private float comboMovement = 0;
     private float startSpaceDist;
@@ -43,6 +44,9 @@ public class PointSystem : MonoBehaviour
     {
         combo++;
         score++;
+        if (score == maxScore) {
+            WinGame();
+        }
         if (score > 0)
         {
             SetScoreTextVisible(true); 
@@ -60,6 +64,7 @@ public class PointSystem : MonoBehaviour
         UpdateScoreUI();
 
         wall.offset = new Vector3(comboMovement + (score/maxScore)*maxWallDisplacement, 0, 0);
+        //wall.offset = new Vector3(wallMoveBackAmount, 0, 0);
         ball.spaceDistance = startSpaceDist + wall.offset.magnitude;
     }
 
@@ -76,7 +81,9 @@ public class PointSystem : MonoBehaviour
         wall.offset = new Vector3(comboMovement  + (score/maxScore)*maxWallDisplacement, 0, 0);
     }
 
-
+    void WinGame() {
+        wall.gameObject.SetActive(false);
+    }
 
     void UpdateScoreUI()
     {
