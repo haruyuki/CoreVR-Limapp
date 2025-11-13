@@ -1,6 +1,10 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Liminal.SDK.Core;
+using Liminal.SDK.VR;
+using Liminal.SDK.VR.Avatars;
+using Liminal.SDK.VR.Input;
 
 public class JaiRacket : MonoBehaviour
 {
@@ -8,7 +12,7 @@ public class JaiRacket : MonoBehaviour
     public AudioClip racketHit;
     public Transform normal;
     public float aimAssist = .5f;
-    private float currentAimAssist = .5f;
+    private float currentAimAssist = 0f;
     public float doubleHitBuffer = .1f;
     private float doubleHit = 0;
 
@@ -55,6 +59,9 @@ public class JaiRacket : MonoBehaviour
 
         ball.HitRacket();
 
+        // var rightHandInput = GetInput(VRInputDeviceHand.Right);
+        // rightHandInput?.SendInputHaptics(frequency: .5f, amplitude: .5f, duration: 0.05f);
+
         Vector3 towardsTarget = (PointSystem.instance.wall.transform.position + new Vector3(0, 3, 0) - ball.position).normalized;
         Vector3 hitDir = normalDir * (side > 0 ? 1 : -1);
 
@@ -64,4 +71,10 @@ public class JaiRacket : MonoBehaviour
         ball.velocity = (ball.GetTargetSpeed() * Vector3.Lerp(hitDir, towardsTarget, aimAssist).normalized) + velocityVector;
         rb.useGravity = true;
     }
+
+    private IVRInputDevice GetInput(VRInputDeviceHand hand)
+        {
+            var device = VRDevice.Device;
+            return hand == VRInputDeviceHand.Left ? device.SecondaryInputDevice : device.PrimaryInputDevice;
+        }
 }
