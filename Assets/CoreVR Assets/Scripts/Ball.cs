@@ -49,7 +49,7 @@ public class Ball : MonoBehaviour
     private GameObject bombBall;
     private GameObject greenBall;
 
-    public GameObject backBoundary;
+    public GameObject boundary;
 
     public bool spaceBall = false;
 
@@ -108,7 +108,7 @@ public class Ball : MonoBehaviour
             PointSystem.OutOfBounds();
         }
 
-        if (backBoundary)
+        if (boundary)
         {
             //PointSystem.instance.ResetScore();
             ResetBall();
@@ -144,6 +144,7 @@ public class Ball : MonoBehaviour
 
     public void ResetBall(){
             ChooseBall();
+            g = 9.1f;
             trailRenderer.Clear();
             position = startPos.position;
             transform.position = position;
