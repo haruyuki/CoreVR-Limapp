@@ -61,7 +61,7 @@ public class JaiRacket : MonoBehaviour
         float velocityDot = -Vector3.Dot(racketVelocity.normalized, ball.velocity.normalized);
         Vector3 velocityVector = velocityDot*racketVelocity.magnitude*velocityMultiplier * Vector3.Scale(Vector3.Lerp(hitDir, towardsTarget, currentAimAssist).normalized, new Vector3(1,0,1));
 
-        ball.velocity = (ball.GetSpeedVector().magnitude * Vector3.Lerp(hitDir, towardsTarget, aimAssist).normalized) + velocityVector;
+        ball.velocity = (ball.GetTargetSpeed() * Vector3.Lerp(hitDir, towardsTarget, aimAssist).normalized) + velocityVector;
         rb.useGravity = true;
     }
 }

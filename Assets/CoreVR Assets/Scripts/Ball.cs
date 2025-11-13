@@ -22,6 +22,9 @@ public class Ball : MonoBehaviour
     public GameObject floorHitParticle;
     public float oobX = -10;
     public float oobZ = 0;
+    
+    public float maxHeight = 2f;
+    public float heightLimitForce = 1f;
 
     public float ballSpreadHeightStart = 4;
     public Vector2 ballSpread = new Vector2(2,1); //height, width
@@ -38,10 +41,9 @@ public class Ball : MonoBehaviour
 
     //combo speed
     [Header("Combo Speed")]
-    private float baseSpeed = 0f;
+    public float baseSpeed = 10f;
 
-    [Tooltip("Extra speed added per combo hit.")]
-    public float extraSpeedPerCombo = 50.0f;
+    public float speedFactor = 2f;
 
     private int _currentCombo = 0;
 
@@ -73,6 +75,14 @@ public class Ball : MonoBehaviour
     void Update()
     {
         position = position + velocity*Time.deltaTime;
+
+        //height limiting
+        if(position.y >= maxHeight && velocity.y > 0){
+            Debug.Log("Limiting Height");
+            velocity.y -= heightLimitForce * Time.deltaTime;
+        }
+
+
 
         if(position.y < floorY)
         {
@@ -115,8 +125,11 @@ public class Ball : MonoBehaviour
             PointSystem.OutOfBounds();
         }
 
-        velocity = new Vector3(velocity.x, velocity.y-(Time.deltaTime*g), velocity.z);
-        
+        if(spaceBall && lastHitRacket){
+            //remove gravity
+        }else{
+            velocity = new Vector3(velocity.x, velocity.y-(Time.deltaTime*g), velocity.z);
+        }
         transform.position = position;
 
     }
@@ -140,6 +153,7 @@ public class Ball : MonoBehaviour
             trailRenderer.startColor = new Color(0,1,0);
             chance += 0.1f;
         }
+
     }
 
     public void ResetBall(){
@@ -154,6 +168,8 @@ public class Ball : MonoBehaviour
             //Target.instance.ResetComboAndSize();
             trailRenderer.Clear();
             bounces = 0;
+            lastHitRacket = false;
+
 
     }
 
@@ -196,9 +212,11 @@ public class Ball : MonoBehaviour
             towardsStart.y *= -1;
         }
 
-        velocity = towardsStart * startVelocity.magnitude;
+        velocity = towardsStart * GetTargetSpeed();
 
         source.PlayOneShot(wallBounceClip[UnityEngine.Random.Range(0, wallBounceClip.Length-1)]);
+
+        lastHitRacket = false;
 
 
         //position.x = wall.transform.position.x;
@@ -224,11 +242,10 @@ public class Ball : MonoBehaviour
     public bool hasHitTarget = false;
 
 
-    public Vector3 GetSpeedVector(){
+    public float GetTargetSpeed(){
 
-        Vector3 dir = velocity.normalized;
-        float targetSpeed = Mathf.Max(0f, baseSpeed + _currentCombo * extraSpeedPerCombo);
-        return dir * targetSpeed;
+        float targetSpeed = Mathf.Max(0f, baseSpeed * (1 + speedFactor * PointSystem.instance.ScorePercent()));
+        return targetSpeed;
     }
 
    
