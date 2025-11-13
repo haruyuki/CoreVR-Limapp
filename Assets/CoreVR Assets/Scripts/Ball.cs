@@ -22,6 +22,9 @@ public class Ball : MonoBehaviour
     public GameObject floorHitParticle;
     public float oobX = -10;
     public float oobZ = 0;
+    
+    public float maxHeight = 2f;
+    public float heightLimitForce = 1f;
 
     public float ballSpreadHeightStart = 4;
     public Vector2 ballSpread = new Vector2(2,1); //height, width
@@ -73,6 +76,12 @@ public class Ball : MonoBehaviour
     void Update()
     {
         position = position + velocity*Time.deltaTime;
+
+        //height limiting
+        if(position.y >= maxHeight && velocity.y > 0){
+            Debug.Log("Limiting Height");
+            velocity.y -= heightLimitForce * Time.deltaTime;
+        }
 
         if(position.y < floorY)
         {

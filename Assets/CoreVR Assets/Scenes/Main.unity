@@ -135,7 +135,7 @@ PrefabInstance:
     - target: {fileID: 2592879054166019734, guid: 59cf7f978bfe02a41b38a86e81450e74,
         type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1558412716938050693, guid: 59cf7f978bfe02a41b38a86e81450e74,
         type: 3}
@@ -475,6 +475,16 @@ PrefabInstance:
         type: 3}
       propertyPath: maxYVeloctity
       value: 9
+      objectReference: {fileID: 0}
+    - target: {fileID: 4796727595566529008, guid: f5b933c85e38da34a9fe1dc7751b4bbb,
+        type: 3}
+      propertyPath: heightLimitForce
+      value: 1.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 4796727595566529008, guid: f5b933c85e38da34a9fe1dc7751b4bbb,
+        type: 3}
+      propertyPath: maxHeight
+      value: 2.5
       objectReference: {fileID: 0}
     - target: {fileID: 4796727595566529014, guid: f5b933c85e38da34a9fe1dc7751b4bbb,
         type: 3}
