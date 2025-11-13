@@ -133,7 +133,8 @@ public class PointSystem : MonoBehaviour
     }
 
     public float ScorePercent(){
-        return score/maxScore + Mathf.Floor(combo/moveBackCombo);
+        return score/maxScore;
+        //+ Mathf.Floor(combo/moveBackCombo);
     }
 
     public static void HitWall(int id){

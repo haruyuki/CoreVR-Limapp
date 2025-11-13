@@ -11002,11 +11002,11 @@ MonoBehaviour:
   scoreAnimator: {fileID: 903147065}
   scoreBar: {fileID: 1358609357}
   comboBar: {fileID: 504326337}
-  maxScore: 20
+  maxScore: 40
   wall: {fileID: 1941145577}
   ball: {fileID: 1915345019}
   maxWallDisplacement: 80
-  moveBackCombo: 5
+  moveBackCombo: 0
   comboMoveAmount: 2
   wallMoveBackAmount: 5
 --- !u!4 &874014023
@@ -12360,7 +12360,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1637287391}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -42.5, y: 0, z: -0.04}
+  m_LocalPosition: {x: -58.3, y: 0, z: -0.04}
   m_LocalScale: {x: 31.65, y: 1, z: 1.6}
   m_Children: []
   m_Father: {fileID: 899729193}
