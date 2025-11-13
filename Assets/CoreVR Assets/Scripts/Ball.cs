@@ -82,6 +82,8 @@ public class Ball : MonoBehaviour
             velocity.y -= heightLimitForce * Time.deltaTime;
         }
 
+
+
         if(position.y < floorY)
         {
            HitFloor();
@@ -123,8 +125,11 @@ public class Ball : MonoBehaviour
             PointSystem.OutOfBounds();
         }
 
-        velocity = new Vector3(velocity.x, velocity.y-(Time.deltaTime*g), velocity.z);
-        
+        if(spaceBall && lastHitRacket){
+            //remove gravity
+        }else{
+            velocity = new Vector3(velocity.x, velocity.y-(Time.deltaTime*g), velocity.z);
+        }
         transform.position = position;
 
     }
@@ -148,6 +153,7 @@ public class Ball : MonoBehaviour
             trailRenderer.startColor = new Color(0,1,0);
             chance += 0.1f;
         }
+
     }
 
     public void ResetBall(){
@@ -161,6 +167,8 @@ public class Ball : MonoBehaviour
             //Target.instance.ResetComboAndSize();
             trailRenderer.Clear();
             bounces = 0;
+            lastHitRacket = false;
+
 
     }
 
@@ -206,6 +214,8 @@ public class Ball : MonoBehaviour
         velocity = towardsStart * GetTargetSpeed();
 
         source.PlayOneShot(wallBounceClip[UnityEngine.Random.Range(0, wallBounceClip.Length-1)]);
+
+        lastHitRacket = false;
 
 
         //position.x = wall.transform.position.x;
