@@ -41,10 +41,9 @@ public class Ball : MonoBehaviour
 
     //combo speed
     [Header("Combo Speed")]
-    private float baseSpeed = 0f;
+    public float baseSpeed = 10f;
 
-    [Tooltip("Extra speed added per combo hit.")]
-    public float extraSpeedPerCombo = 50.0f;
+    public float speedFactor = 2f;
 
     private int _currentCombo = 0;
 
@@ -204,7 +203,7 @@ public class Ball : MonoBehaviour
             towardsStart.y *= -1;
         }
 
-        velocity = towardsStart * startVelocity.magnitude;
+        velocity = towardsStart * GetTargetSpeed();
 
         source.PlayOneShot(wallBounceClip[UnityEngine.Random.Range(0, wallBounceClip.Length-1)]);
 
@@ -232,11 +231,10 @@ public class Ball : MonoBehaviour
     public bool hasHitTarget = false;
 
 
-    public Vector3 GetSpeedVector(){
+    public float GetTargetSpeed(){
 
-        Vector3 dir = velocity.normalized;
-        float targetSpeed = Mathf.Max(0f, baseSpeed + _currentCombo * extraSpeedPerCombo);
-        return dir * targetSpeed;
+        float targetSpeed = Mathf.Max(0f, baseSpeed * (1 + speedFactor * PointSystem.instance.ScorePercent()));
+        return targetSpeed;
     }
 
    
