@@ -6,6 +6,11 @@ public class Ball : MonoBehaviour
 {
     public float spaceDistance = 25;
 
+    public float playerSlowdownStartPercent = 1f;
+    public float playerSlowdownEndPercent = .4f;
+
+    public float playerSlowownDistance = 4;
+
     public Vector3 position;
     public Vector3 velocity = new Vector3(0,10,0);
     public float distanceVelocityIncrease;
@@ -74,12 +79,20 @@ public class Ball : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        position = position + velocity*Time.deltaTime;
+        float timeScale = 1f;
+        float dist = Vector3.Distance(Vector3.zero, position);
+        if(dist < playerSlowownDistance){
+            float playerSlowdownPercent =  Mathf.Lerp(playerSlowdownStartPercent, playerSlowdownEndPercent, PointSystem.instance.ScorePercent());
+            timeScale = Mathf.Lerp(playerSlowdownPercent, 1, dist/playerSlowownDistance);
+
+        }
+
+        position = position + velocity*Time.deltaTime*timeScale;
 
         //height limiting
         if(position.y >= maxHeight && velocity.y > 0){
             Debug.Log("Limiting Height");
-            velocity.y -= heightLimitForce * Time.deltaTime;
+            velocity.y -= heightLimitForce * Time.deltaTime * timeScale;
         }
 
 
@@ -128,7 +141,7 @@ public class Ball : MonoBehaviour
         if(spaceBall && lastHitRacket){
             //remove gravity
         }else{
-            velocity = new Vector3(velocity.x, velocity.y-(Time.deltaTime*g), velocity.z);
+            velocity = new Vector3(velocity.x, velocity.y-(Time.deltaTime*g*timeScale), velocity.z);
         }
         transform.position = position;
 
