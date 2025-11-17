@@ -22555,6 +22555,11 @@ PrefabInstance:
       propertyPath: velocityMultiplier
       value: 70
       objectReference: {fileID: 0}
+    - target: {fileID: 5826018363312803061, guid: 59cf7f978bfe02a41b38a86e81450e74,
+        type: 3}
+      propertyPath: endAimAssist
+      value: 0.6
+      objectReference: {fileID: 0}
     - target: {fileID: 5675446472424214123, guid: 59cf7f978bfe02a41b38a86e81450e74,
         type: 3}
       propertyPath: m_Enabled

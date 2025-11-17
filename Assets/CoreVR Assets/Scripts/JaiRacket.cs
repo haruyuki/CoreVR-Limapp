@@ -11,8 +11,13 @@ public class JaiRacket : MonoBehaviour
     public AudioSource audioSource;
     public AudioClip racketHit;
     public Transform normal;
-    public float aimAssist = .5f;
+
+    //aim assist lerps between these 2
+    public float startAimAssist = .1f;
+    public float endAimAssist = .5f;
+
     private float currentAimAssist = 0f;
+
     public float doubleHitBuffer = .1f;
     private float doubleHit = 0;
 
@@ -48,7 +53,7 @@ public class JaiRacket : MonoBehaviour
 
         currentAimAssist = 0;
         if(!ball.spaceBall){
-            currentAimAssist = aimAssist;
+            currentAimAssist = Mathf.Lerp(startAimAssist, endAimAssist, PointSystem.instance.ScorePercent());
         }
 
         Rigidbody rb = ball.GetComponent<Rigidbody>();
@@ -68,7 +73,7 @@ public class JaiRacket : MonoBehaviour
         float velocityDot = -Vector3.Dot(racketVelocity.normalized, ball.velocity.normalized);
         Vector3 velocityVector = velocityDot*racketVelocity.magnitude*velocityMultiplier * Vector3.Scale(Vector3.Lerp(hitDir, towardsTarget, currentAimAssist).normalized, new Vector3(1,0,1));
 
-        ball.velocity = (ball.GetTargetSpeed() * Vector3.Lerp(hitDir, towardsTarget, aimAssist).normalized) + velocityVector;
+        ball.velocity = (ball.GetTargetSpeed() * Vector3.Lerp(hitDir, towardsTarget, currentAimAssist).normalized) + velocityVector;
         rb.useGravity = true;
     }
 
