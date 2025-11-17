@@ -13,6 +13,7 @@ public class PointSystem : MonoBehaviour
     public TMP_Text scoreText;
     public TMP_Text scoreNum;
     public Animator scoreAnimator; 
+    public GameObject winCanvas;
 
     public static PointSystem instance;
 
@@ -44,7 +45,7 @@ public class PointSystem : MonoBehaviour
     {
         combo++;
         score++;
-        if (score == maxScore) {
+        if (score >= maxScore) {
             WinGame();
         }
         if (score > 0)
@@ -83,6 +84,8 @@ public class PointSystem : MonoBehaviour
 
     void WinGame() {
         wall.gameObject.SetActive(false);
+        ball.gameObject.SetActive(false);
+        winCanvas.SetActive(true);
     }
 
     void UpdateScoreUI()
