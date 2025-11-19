@@ -114,8 +114,8 @@ public class PointSystem : MonoBehaviour
     }
 
     public void hitWall(int id){
-        Debug.Log($"Ball hit wall {id}, spaceBall is {ball.spaceBall}");
-        if(!ball.spaceBall){
+        Debug.Log($"Ball hit wall {id}, isBombBall is {ball.isBombBall}");
+        if(!ball.isBombBall){
             AddPoint();
         }else{
             ResetScore();
@@ -123,9 +123,9 @@ public class PointSystem : MonoBehaviour
     }
 
     public void hitSpace(){
-        Debug.Log($"Ball hit space , spaceBall is {ball.spaceBall}");
+        Debug.Log($"Ball hit space , isBombBall is {ball.isBombBall}");
 
-        if(ball.spaceBall){
+        if(ball.isBombBall){
             AddPoint();
             GameObject sp = Instantiate(spaceParticles, ball.position, Quaternion.identity);
             sp.SetActive(true);

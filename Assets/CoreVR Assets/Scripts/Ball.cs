@@ -6,33 +6,52 @@ public class Ball : MonoBehaviour
 {
     public float spaceDistance = 25;
 
+    [Header("Player proximity slowdown")]
+
+    [Tooltip("Distance at which the slowdown begins")]
+    public float playerSlowownDistance = 4;
+
+    [Tooltip("Slowdown at score = 0")]
     public float playerSlowdownStartPercent = 1f;
+
+    [Tooltip("Slowdown at score = maxScore")]
     public float playerSlowdownEndPercent = .4f;
 
-    public float playerSlowownDistance = 4;
+    [Header("Physics attributes")]
 
     public Vector3 position;
     public Vector3 velocity = new Vector3(0,10,0);
-    public float distanceVelocityIncrease;
+    private Vector3 startVelocity;
+
     public float maxYVeloctity = 10;
-    public Vector3 startVelocity;
     public static event System.Action OnMissed;
 
     public float g = 9.1f; //gravity
 
-    public float floorY = 0;
+    private float floorY = 0; //y position of the ground
 
     public AnimationCurve repeatedBounceBoost;
     public float distanceBounceScale = 2;
-    public GameObject floorHitParticle;
+
+
     public float oobX = -10;
     public float oobZ = 0;
-    
+
+
+    [Header("Height Limiting")]
+
     public float maxHeight = 2f;
     public float heightLimitForce = 1f;
 
+    [Header("Return perameters")]
+
     public float ballSpreadHeightStart = 4;
     public Vector2 ballSpread = new Vector2(2,1); //height, width
+
+    [Header("Effects")]
+
+    public GameObject floorHitParticle;
+
 
     public AudioClip[] floorBounceClip;
     public AudioClip[] wallBounceClip;
@@ -45,12 +64,11 @@ public class Ball : MonoBehaviour
     public Transform startPos;
 
     //combo speed
-    [Header("Combo Speed")]
+    [Header("Ball Speedup")]
     public float baseSpeed = 10f;
 
-    public float speedFactor = 2f;
+    public float endSpeed = 21f;
 
-    private int _currentCombo = 0;
 
     public GameObject ball;
     private GameObject bombBall;
@@ -58,7 +76,7 @@ public class Ball : MonoBehaviour
 
     public GameObject boundary;
 
-    public bool spaceBall = false;
+    public bool isBombBall = false;
 
 
    
@@ -138,7 +156,7 @@ public class Ball : MonoBehaviour
             PointSystem.OutOfBounds();
         }
 
-        if(spaceBall && lastHitRacket){
+        if(isBombBall && lastHitRacket){
             //remove gravity
         }else{
             velocity = new Vector3(velocity.x, velocity.y-(Time.deltaTime*g*timeScale), velocity.z);
@@ -156,13 +174,13 @@ public class Ball : MonoBehaviour
         if (Random.value < chance) {
             bombBall.SetActive(true);
             greenBall.SetActive(false);
-            spaceBall = true;
+            isBombBall = true;
             trailRenderer.startColor = new Color(1,0,0);
             chance = 0;
         } else {
             greenBall.SetActive(true);
             bombBall.SetActive(false);
-            spaceBall = false;
+            isBombBall = false;
             trailRenderer.startColor = new Color(0,1,0);
             chance += 0.1f;
         }
@@ -257,7 +275,7 @@ public class Ball : MonoBehaviour
 
     public float GetTargetSpeed(){
 
-        float targetSpeed = Mathf.Max(0f, baseSpeed * (1 + speedFactor * PointSystem.instance.ScorePercent()));
+        float targetSpeed = Mathf.Lerp(baseSpeed, endSpeed, PointSystem.instance.ScorePercent());
         return targetSpeed;
     }
 

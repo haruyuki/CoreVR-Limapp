@@ -9,7 +9,7 @@ public class Boundary : MonoBehaviour
     private void OnTriggerEnter(Collider other)
     {
         Ball ball = other.GetComponent<Ball>();
-        if (!ball.spaceBall) {
+        if (!ball.isBombBall) {
             pointSystem.ResetScore();
             ball.ResetBall();
         } else {

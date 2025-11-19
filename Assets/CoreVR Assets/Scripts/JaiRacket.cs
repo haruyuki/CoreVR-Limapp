@@ -52,13 +52,13 @@ public class JaiRacket : MonoBehaviour
         float side = -Vector3.Dot(normalDir, ball.velocity.normalized);
 
         currentAimAssist = 0;
-        if(!ball.spaceBall){
+        if(!ball.isBombBall){
             currentAimAssist = Mathf.Lerp(startAimAssist, endAimAssist, PointSystem.instance.ScorePercent());
         }
 
         Rigidbody rb = ball.GetComponent<Rigidbody>();
 
-        if (ball.spaceBall){
+        if (ball.isBombBall){
             rb.useGravity = false;
         }
 
